@@ -1,4 +1,8 @@
-<%= form_for(@portfolio) do |f| %>
+<% content_for :script do %>
+	<%= javascript_include_tag 'portfolio' %>
+<% end %>
+
+<%= form_for(@portfolio, :html => { :multipart => true }) do |f| %>
   <% if @portfolio.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@portfolio.errors.count, "error") %> prohibited this portfolio from being saved:</h2>
@@ -12,17 +16,28 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br />
+    <strong><%= f.label :title %></strong>
     <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :visible %><br />
     <%= f.check_box :visible %>
+    <%= f.label :visible, 'Visible?' %>
   </div>
-  <div class="field">
-    <%= f.label :position %><br />
-    <%= f.text_field :position %>
-  </div>
+  <div class="portfolio-edit-photos">
+  <% f.fields_for :photos do |photo_form| %>
+  	<% if photo_form.object.new_record? %>
+	  	<div class="field portfolio-new-photo">
+	  		<%= photo_form.file_field :image, :label => 'Add Image' %>
+	  	</div>
+	  <% else %>
+  		<div class="field portfolio-edit-photo">
+  			<%= image_tag photo_form.object.image.url(:thumb) %><br />
+	  		<%= photo_form.file_field :image, :label => 'Replace Image' %><br />
+		    <%= photo_form.check_box '_destroy' %>
+		    <%= photo_form.label '_destroy', 'Remove' %><br />
+		    <%= photo_form.text_field :position %>
+		  </div>
+		<% end %>
+	<% end %>
+	</div>
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -25,6 +25,7 @@ class PortfoliosController < ApplicationController
   # GET /portfolios/new.xml
   def new
     @portfolio = Portfolio.new
+    @photo = @portfolio.photos.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +36,7 @@ class PortfoliosController < ApplicationController
   # GET /portfolios/1/edit
   def edit
     @portfolio = Portfolio.find(params[:id])
+    @photo = @portfolio.photos.build
   end
 
   # POST /portfolios
