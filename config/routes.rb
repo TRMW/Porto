@@ -2,6 +2,8 @@ Dru::Application.routes.draw do
   resources :photos
   resources :portfolios
 
+	root :to => "portfolios#show", :id => 1
+	
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

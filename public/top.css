@@ -13,129 +13,62 @@ a:visited {
 	color: #666;
 	}
 
+a:hover { 
+	text-decoration: none; 
+	}
+
 h1, ul, li {
 	margin: 0;
 	padding: 0;
+	float: left;
+	}
+	
+h1 { 
+	font-size: 20px;
+	float: left; 
+	margin-right: 15px;
 	}
 
 li {
 	list-style-type: none;
 	}
-	
-h1 { 
-	font-size: 20px;
-	}
-	
-h1 a:visited {
-	color: black;
-	}
-	
-header h1 {
-	float: left; 
-	margin-right: 15px;
-	}
 
 content {
 	display: block;
-	margin: 30px auto;
+	margin: 20px auto;
 	width: 720px;
 	}
 	
 header {
 	display: block;
-	margin-bottom: 20px;
-	line-height: 14px;
-	position: relative;
-	}
-	
-main {
-	display: block;
+	margin-bottom: 15px;
+	line-height: 15px;
 	position: relative;
 	}
 	
 #nav {
-	bottom: 0;
-	left: 130px;
-	margin-bottom: -2px;
-	position: absolute;
+	width: 480px;
 	}
 	
 #nav li {
-	margin-right: 8px;
-	float: left;
+	margin-bottom: 5px;
+	}
+	
+#bio-link a, #contact-link a {
+	font-weight: bold;
 	}
 
 #portfolio-nav {
-	bottom: 0;
-	margin-bottom: -7px;
 	position: absolute;
 	right: 0;
+	bottom: 0;
+	margin-bottom: 5px;
 	}
 	
-#portfolio-nav li {
-	background-color: black;
-	border: solid 1px black;
-	color: white;
-	float: left;
-	margin-left: 8px;
-	padding: 5px;
-	}
-	
-#portfolio-nav li a {
-	color: white;
-	}
-	
-#portfolio-nav li:hover {
-	background-color: white;
-	color: black;
-	}
-
-#portfolio-nav li:hover a {
-	color: black;
-	}
-	
-#portfolio-nav li.inactive {
-	color: silver;
-	background-color: white;
-	border: solid 1px silver;
-	cursor: default;
-	}
-	
-#portfolios {
-	left: 0;
-	margin-left: -170px;
-	position: absolute;
-	top: 0;
-	width: 150px;
-	}
-	
-#portfolios li {
-	display: block;
-	text-align: right;
-	margin-bottom: 8px;
-	width: 150px;
+#portfolio-nav a {
 	font-weight: bold;
 	}
-	
-#portfolios li a {
-	font-weight: normal;
-	}
-		
-.portfolio-photo {
-	display: none;
-	left: 0;
-	position: absolute;
-	top: 0;
-	}
-	
-main img {
-	cursor: pointer;
-	}
-	
-#photo_0 {
-	display: inline;
-	}
-	
+
 .portfolio-edit-photo {
 	float: left;
 	background: black;

@@ -1,20 +1,21 @@
+<% content_for :script do %>
+	<%= javascript_include_tag 'portfolio' %>
+<% end %>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @portfolio.title %>
-</p>
+<ul id="portfolios">
+<% for portfolio in @portfolios %>
+	<li><%= link_to_unless_current portfolio.title.downcase, portfolio, :class => 'portfolio-link' %></li>
+<% end %>
+</ul>
+		
+<% @portfolio.photos.each_with_index do |photo, index| %>
 
-<p>
-  <b>Visible:</b>
-  <%= @portfolio.visible %>
-</p>
+	<% if photo == @portfolio.photos.last %>
+		<%= image_tag photo.image.url, :class => "portfolio-photo-last", :id => "photo_#{index}" %>
+	<% else %>
+  	<%= image_tag photo.image.url, :class => "portfolio-photo", :id => "photo_#{index}" %>
+  <% end %>
 
-<p>
-  <b>Position:</b>
-  <%= @portfolio.position %>
-</p>
-
-
-<%= link_to 'Edit', edit_portfolio_path(@portfolio) %> |
-<%= link_to 'Back', portfolios_path %>
+<% end %>

@@ -6,10 +6,34 @@
   <%= javascript_include_tag :defaults, 'jquery-ui' %>
   <%= yield :script %>
   <%= csrf_meta_tag %>
+  
+  <!--[if lt IE9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
 </head>
 <body>
 
-<%= yield %>
+<content class="group">
+
+	<header class="group">
+		<h1><%= link_to 'dru donovan', root_path %></h1>
+		
+		<ul id="nav">
+			<li id="bio-link"><a href="#">bio</a></li>
+			<li id="contact-link"><a href="#">contact</a></li>
+		</ul>
+		
+		<ul id="portfolio-nav">
+			<li id="previous-link" class="inactive">previous</li>
+			<li id="next-link"><a href="#">next</a></li>
+		</ul>
+	</header>
+	
+	<main>
+	<%= yield %>
+	</main>
+
+</content>
 
 </body>
 </html>
