@@ -1,9 +1,11 @@
 $(document).ready(function(){
 	$('.portfolio-edit-photos').sortable({
 		items: '.portfolio-edit-photo',
+		tolerance: 'pointer',
 		stop: function(){
 			$("[id$='position']").each(function(i){
 				$(this).attr('value', i+1);
+				$(this).next('.position').text(i+1); // update visible position indicator
 			});
 		}
 	});
@@ -48,5 +50,12 @@ $(document).ready(function(){
 		$('#next-link').removeClass('inactive').html('<a href="#">next</a>');
 		$('#previous-link').html('previous').addClass('inactive');
 		i = 0;
+	});
+	
+	$('.photo-replace-link').click(function(){
+		$(this).next('input:file').show();
+		$(this).siblings('.remove-check').hide();
+		$(this).hide();
+		return false;
 	});
 });

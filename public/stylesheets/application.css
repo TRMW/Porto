@@ -1,3 +1,5 @@
+/* !Globals */
+
 body {
 	background-color: #fff; 
   font-family: Helvetica, Arial, sans-serif;
@@ -11,6 +13,10 @@ a {
 	
 a:visited { 
 	color: #666;
+	}
+	
+a img {
+	border: none;
 	}
 
 h1, ul, li {
@@ -30,11 +36,17 @@ h1 a:visited {
 	color: black;
 	}
 	
+.last {
+	margin-right: 0 !important;
+	}
+	
+/* !Layout */
+
 header h1 {
 	float: left; 
 	margin-right: 15px;
 	}
-
+	
 content {
 	display: block;
 	margin: 30px auto;
@@ -53,6 +65,8 @@ main {
 	position: relative;
 	}
 	
+/* !Nav */
+	
 #nav {
 	bottom: 0;
 	left: 130px;
@@ -64,6 +78,30 @@ main {
 	margin-right: 8px;
 	float: left;
 	}
+	
+/* !Portfolio Sidebar */
+
+#portfolios {
+	left: 0;
+	margin-left: -170px;
+	position: absolute;
+	top: 0;
+	width: 150px;
+	}
+	
+#portfolios li {
+	display: block;
+	text-align: right;
+	margin-bottom: 8px;
+	width: 150px;
+	font-weight: bold;
+	}
+	
+#portfolios li a {
+	font-weight: normal;
+	}
+	
+/* !View Portfolio */
 
 #portfolio-nav {
 	bottom: 0;
@@ -100,26 +138,6 @@ main {
 	border: solid 1px silver;
 	cursor: default;
 	}
-	
-#portfolios {
-	left: 0;
-	margin-left: -170px;
-	position: absolute;
-	top: 0;
-	width: 150px;
-	}
-	
-#portfolios li {
-	display: block;
-	text-align: right;
-	margin-bottom: 8px;
-	width: 150px;
-	font-weight: bold;
-	}
-	
-#portfolios li a {
-	font-weight: normal;
-	}
 		
 .portfolio-photo {
 	display: none;
@@ -128,7 +146,7 @@ main {
 	top: 0;
 	}
 	
-main img {
+content.portfolios-show img {
 	cursor: pointer;
 	}
 	
@@ -136,12 +154,128 @@ main img {
 	display: inline;
 	}
 	
+/* !Portfolio Index */
+
+.portfolio-edit-link {
+	float: left;
+}
+
+.portfolio-delete-link {
+	float: right;
+}
+
+.new-portfolio-link {
+	text-decoration: underline;
+	}
+
+/* !Edit Portfolio */
+
+content.portfolios-new,
+content.portfolios-edit,
+content.portfolios-index {
+	width: 730px;
+	-moz-user-select: none;
+  -webkit-user-select: none;
+	}
+
+#portfolio_title { 
+	font-size: 20px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight: bold;
+	border: solid 1px black;
+	padding: 5px;
+	margin: 0;
+	width: 221px;
+	}
+
 .portfolio-edit-photo {
 	float: left;
 	background: black;
 	color: white;
 	margin-right: 10px;
 	padding: 5px;
+	width: 223px;
+	position: relative;
+	}
+
+.draggable {
+	cursor: move;
+	}
+
+content.portfolios-edit .portfolio-new-photo {
+	cursor: default;
+	}
+		
+.photo-wrapper {
+	height: 180px;
+	overflow: hidden;
+	}
+
+.portfolio-edit-photo a {
+	color: white;
+	}
+	
+.title, .position {
+	position: absolute;
+	left: 5px;
+	top: 5px;
+	background: black;
+	font-size: 150%;
+	font-weight: bold;
+	padding: 5px 10px 10px 5px;
+	}
+	
+.first {
+	clear: left;
+	}
+	
+.edit-actions {
+	margin-top: 10px;
+	margin-bottom: 5px;
+	height: 20px;
+	overflow: hidden;
+	}
+	
+input[type="file"]{
+	width: 223px;
+	color: white;
+	background-color: black;
+	}
+	
+.portfolio-options {
+	font-weight: bold;
+	margin-bottom: 10px;
+	clear: left;
+	float: left;
+	width: 720px;
+	}
+	
+.add-photos-link {
+	float: left;
+	text-decoration: underline;
+	}
+	
+.portfolio-visible-check {
+	float: right;
+	}
+
+.remove-check {
+	float: right;
+	}
+
+.image-placeholder {
+	border: dashed 1px white;
+	height: 178px;
+	width: 223px;
+	position: relative;
+	}
+
+.image-placeholder span {
+	padding-top: 78px;
+	display: block;
+	text-align: center;
+	font-size: 150%;
+	font-weight: bold;
 	}
 	
 /* !Default Rails Styles */

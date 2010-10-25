@@ -1,6 +1,3 @@
-<h1>Editing portfolio</h1>
+<% content_for :title do "edit - " + @portfolio.title.downcase end %>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @portfolio %> |
-<%= link_to 'Back', portfolios_path %>

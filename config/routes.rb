@@ -1,4 +1,5 @@
 Dru::Application.routes.draw do
+	match 'portfolios/add_new_photos' => 'portfolios#add_new_photos', :as => :add_new_photos
   resources :photos
   resources :portfolios
 

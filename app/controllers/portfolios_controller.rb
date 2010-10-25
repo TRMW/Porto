@@ -25,7 +25,9 @@ class PortfoliosController < ApplicationController
   # GET /portfolios/new.xml
   def new
     @portfolio = Portfolio.new
-    @photo = @portfolio.photos.build
+    6.times do
+    	@portfolio.photos.build
+    end
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,7 +38,10 @@ class PortfoliosController < ApplicationController
   # GET /portfolios/1/edit
   def edit
     @portfolio = Portfolio.find(params[:id])
-    @photo = @portfolio.photos.build
+    new = 3 - (@portfolio.photos.length % 3)
+    new.times do
+    	@portfolio.photos.build
+    end
   end
 
   # POST /portfolios
@@ -80,6 +85,15 @@ class PortfoliosController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(portfolios_url) }
       format.xml  { head :ok }
+    end
+  end
+  
+  def add_new_photos
+  	@start = params[:last_photo].to_i
+  	@new_photos = params[:new_photos].to_i
+    
+    respond_to do |format|
+  		format.js
     end
   end
 end
