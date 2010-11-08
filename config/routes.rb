@@ -1,10 +1,16 @@
 Dru::Application.routes.draw do
+  resources :posts
+
 	match 'portfolios/add_new_photos' => 'portfolios#add_new_photos', :as => :add_new_photos
+	match 'portfolios/position' => 'portfolios#position', :as => :portfolio_position
+	match 'settings' => 'portfolios#settings'
+	match 'contact' => 'portfolios#contact'
+	match 'bio' => 'portfolios#bio'
 	match 'universityclub' => 'portfolios#index', :as => :admin
   resources :photos
   resources :portfolios
 
-	root :to => "portfolios#show", :id => 1
+	root :to => "portfolios#show", :id => Settings.front_portfolio
 	
   # The priority is based upon order of creation:
   # first created -> highest priority.

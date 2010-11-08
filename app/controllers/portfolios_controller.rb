@@ -1,8 +1,11 @@
 class PortfoliosController < ApplicationController
+	uses_tiny_mce :only => :index
+	
   # GET /portfolios
   # GET /portfolios.xml
   def index
-    @portfolios = Portfolio.all
+    @posts = Post.all
+    @settings = Settings.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -51,7 +54,7 @@ class PortfoliosController < ApplicationController
 
     respond_to do |format|
       if @portfolio.save
-        format.html { redirect_to(@portfolio, :notice => 'Portfolio was successfully created.') }
+        format.html { redirect_to(@portfolio, :notice => 'Portfolio created.') }
         format.xml  { render :xml => @portfolio, :status => :created, :location => @portfolio }
       else
         format.html { render :action => "new" }
@@ -67,7 +70,7 @@ class PortfoliosController < ApplicationController
 
     respond_to do |format|
       if @portfolio.update_attributes(params[:portfolio])
-        format.html { redirect_to(@portfolio, :notice => 'Portfolio was successfully updated.') }
+        format.html { redirect_to(@portfolio, :notice => 'Portfolio updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -95,5 +98,21 @@ class PortfoliosController < ApplicationController
     respond_to do |format|
   		format.js
     end
+  end
+  
+  def position
+  	params[:portfolios].each do |key, value|
+  		logger.info "key = #{key} and value = #{value}"
+  		Portfolio.find(key).update_attribute('position', value)
+  	end
+  end
+  
+  def settings
+  	Settings.show_portfolios = params[:show_portfolios] || 'false'
+  	Settings.front_portfolio = params[:front_portfolio]
+  	Settings.phone = params[:phone]
+  	Settings.email = params[:email]
+  	Settings.bio = params[:bio]
+  	redirect_to(portfolios_path, :notice => 'Settings updated.')
   end
 end

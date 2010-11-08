@@ -3,6 +3,6 @@ class ApplicationController < ActionController::Base
   before_filter :get_portfolios
   
   def get_portfolios
-		@portfolios = Portfolio.all
+		@portfolios = Portfolio.all(:order => 'position')
 	end
 end

@@ -69,7 +69,7 @@ main {
 	
 #nav {
 	bottom: 0;
-	left: 130px;
+	left: 160px;
 	margin-bottom: -2px;
 	position: absolute;
 	}
@@ -278,6 +278,89 @@ input[type="file"]{
 	font-weight: bold;
 	}
 	
+/* !News Posts */
+
+.news-post {
+	margin-bottom: 20px;
+	}
+	
+.news-post img {
+	float: left;
+	margin-right: 20px;
+	}
+	
+.news-post h3,
+.news-post .post-body {
+	float: left;
+	width: 278px;
+	}
+	
+.news-post h3 {
+	margin-top: 0;
+	}
+	
+.news-post h3 a {
+	font-weight: normal;
+	font-size: 14px;
+	}
+	
+/* !Settings */
+
+.first {
+	clear: left;
+	}
+
+.settings .field {
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 20px;	
+	}
+	
+#bio-field {
+	margin-bottom: 10px;
+	}
+	
+.settings label {
+	display: block;
+	font-weight: bold;
+	margin-bottom: 5px;
+	}
+	
+.settings .select-field label {
+	display: inline;
+	}
+	
+.settings input[type="text"],
+.settings select {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size:   14px;
+  border: solid 1px black;
+  padding: 10px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+	}
+
+.settings input[type="text"],
+.settings select {
+	height: 40px;
+	width: 233px;
+	}
+	
+#bio_container .mceLayout {
+	border: solid 1px black;
+	}
+	
+.settings textarea {
+	width: 697px;
+	height: 300px;
+	padding: 10px;
+	}
+	
+.settings input[type="submit"] {
+	clear: left;
+	}
+	
 /* !Default Rails Styles */
 
 pre {
@@ -288,10 +371,6 @@ pre {
 
 div.field, div.actions {
   margin-bottom: 10px;
-	}
-	
-.actions {
-	clear: left;
 	}
 
 #notice {

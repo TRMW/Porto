@@ -3,14 +3,6 @@
 <% end %>
 
 <% content_for :title do @portfolio.title.downcase end %>
-
-<p id="notice"><%= notice %></p>
-
-<ul id="portfolios">
-<% for portfolio in @portfolios %>
-	<li><%= link_to_unless_current portfolio.title.downcase, portfolio, :class => 'portfolio-link' %></li>
-<% end %>
-</ul>
 		
 <% @portfolio.photos.each_with_index do |photo, index| %>
 
