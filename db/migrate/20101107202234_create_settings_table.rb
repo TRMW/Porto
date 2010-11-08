@@ -6,7 +6,7 @@ class CreateSettingsTable < ActiveRecord::Migration
       t.timestamps
     end
     
-    add_index :settings, :var, :unique => true
+    add_index :settings, :var, :uni => true
   end
 
   def self.down
