@@ -6,5 +6,5 @@ class Photo < ActiveRecord::Base
   									:default_style => :default,
   									:storage => :s3, 
       							:s3_credentials => "#{RAILS_ROOT}/config/s3.yml", 
-      							:path => ":class/:portfolio_id/:basename/:basename-:style.:extension"
+      							:path => "portfolios/:portfolio_id/:basename/:basename-:style.:extension"
 end
