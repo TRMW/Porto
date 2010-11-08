@@ -2,6 +2,6 @@
 	<%= image_tag post.image.url, :alt => post.title %>
 	<h3><%= post.title %> <%= link_to post.created_at.strftime('%b %d, %Y'), post %></h3>
 	<div class="post-body">
-		<%= post.body %>
+		<%= raw post.body %>
 	</div>
 </div>

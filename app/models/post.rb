@@ -4,5 +4,5 @@ class Post < ActiveRecord::Base
   									:default_style => :default,
   									:storage => :s3, 
       							:s3_credentials => "#{RAILS_ROOT}/config/s3.yml", 
-      							:path => "post_images/:style/:filename"
+      							:path => ":class/:id/:basename-:style.:extension"
 end

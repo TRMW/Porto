@@ -302,6 +302,10 @@ content.portfolios-edit .portfolio-new-photo {
 	font-size: 14px;
 	}
 	
+.news-post .post-body p {
+	margin-top: 0;
+	}
+	
 /* !Settings */
 
 .first {
