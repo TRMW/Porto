@@ -23,7 +23,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'aws-s3', :require => 'aws/s3'
 gem 'paperclip'
 gem 'acts_as_list'
-# gem 'rails-settings', :require => 'settings'
+gem 'rails-settings', :require => 'settings'
 gem 'tiny_mce'
 
 # Bundle gems for the local environment. Make sure to
