@@ -5,7 +5,6 @@ class PortfoliosController < ApplicationController
   # GET /portfolios.xml
   def index
     @posts = Post.all
-    @settings = Settings.all
 
     respond_to do |format|
       format.html # index.html.erb
