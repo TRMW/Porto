@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101107202234) do
+ActiveRecord::Schema.define(:version => 20101108041545) do
 
   create_table "photos", :force => true do |t|
     t.string    "image_file_name"
@@ -21,11 +21,11 @@ ActiveRecord::Schema.define(:version => 20101107202234) do
   end
 
   create_table "portfolios", :force => true do |t|
-    t.string    "title"
-    t.boolean   "visible"
-    t.integer   "position"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.string   "title"
+    t.boolean  "visible",    :default => false
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "posts", :force => true do |t|
