@@ -3,7 +3,7 @@
 <% end %>
 
 <div id="portfolio-edit">
-<%= form_for(@portfolio, :html => { :multipart => true }) do |f| %>
+<%= form_for([:admin, @portfolio], :html => { :multipart => true }) do |f| %>
 	<%= render 'errors' if @portfolio.errors.any? %>
 
   <div class="field group">

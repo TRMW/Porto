@@ -3,6 +3,6 @@ class Post < ActiveRecord::Base
   									:styles => { :default => "350x278>", :thumb => "223x223>" },
   									:default_style => :default,
   									:storage => :s3, 
-      							:s3_credentials => "#{RAILS_ROOT}/config/s3.yml", 
+      							:s3_credentials => "#{::Rails.root.to_s}/config/s3.yml", 
       							:path => ":class/:id/:basename-:style.:extension"
 end

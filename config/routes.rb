@@ -7,14 +7,13 @@ Dru::Application.routes.draw do
 	match 'bio' => 'portfolios#bio'
 	
 	match '/universityclub' => 'portfolios#index', :as => :admin
-	scope '/universityclub' do
-  	resources :portfolios, :except => [' show' ]
-  	resources :posts, :except => [ 'show', 'index' ]
+	scope '/universityclub', :as => "admin" do
+  	resources :portfolios, :except => :show
+  	resources :posts, :except => [ :show, :index ]
 	end
 	
-	match '/portfolios/:id' => 'portfolios#show', :as => :portfolio_path
-	match '/post/:id' => 'posts#show', :as => :post_path
-	match '/posts' => 'posts#index', :as => :posts_path
+	resources :portfolios, :only => :show
+  resources :posts, :only => [ :show, :index ]
 	
 	root :to => "portfolios#show", :id => Settings.front_portfolio
 	
