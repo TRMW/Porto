@@ -85,7 +85,7 @@ class PortfoliosController < ApplicationController
     @portfolio.destroy
 
     respond_to do |format|
-      format.html { redirect_to(portfolios_url) }
+      format.html { redirect_to(admin_url) }
       format.xml  { head :ok }
     end
   end
@@ -112,6 +112,6 @@ class PortfoliosController < ApplicationController
   	Settings.phone = params[:phone]
   	Settings.email = params[:email]
   	Settings.bio = params[:bio]
-  	redirect_to(portfolios_path, :notice => 'Settings updated.')
+  	redirect_to(admin_url, :notice => 'Settings updated.')
   end
 end

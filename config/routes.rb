@@ -1,5 +1,4 @@
 Dru::Application.routes.draw do
-  resources :posts
 
 	match 'portfolios/add_new_photos' => 'portfolios#add_new_photos', :as => :add_new_photos
 	match 'portfolios/position' => 'portfolios#position', :as => :portfolio_position
@@ -7,8 +6,10 @@ Dru::Application.routes.draw do
 	match 'contact' => 'portfolios#contact'
 	match 'bio' => 'portfolios#bio'
 	match 'universityclub' => 'portfolios#index', :as => :admin
+	
   resources :photos
-  resources :portfolios
+  resources :portfolios, :except => "index"
+  resources :posts
 
 	root :to => "portfolios#show", :id => Settings.front_portfolio
 	
