@@ -5,12 +5,17 @@ Dru::Application.routes.draw do
 	match 'settings' => 'portfolios#settings'
 	match 'contact' => 'portfolios#contact'
 	match 'bio' => 'portfolios#bio'
-	match 'universityclub' => 'portfolios#index', :as => :admin
 	
-  resources :photos
-  resources :portfolios, :except => "index"
-  resources :posts
-
+	match '/universityclub' => 'portfolios#index', :as => :admin
+	scope '/universityclub' do
+  	resources :portfolios, :except => [' show' ]
+  	resources :posts, :except => [ 'show', 'index' ]
+	end
+	
+	match '/portfolios/:id' => 'portfolios#show', :as => :portfolio_path
+	match '/post/:id' => 'posts#show', :as => :post_path
+	match '/posts' => 'posts#index', :as => :posts_path
+	
 	root :to => "portfolios#show", :id => Settings.front_portfolio
 	
   # The priority is based upon order of creation:
