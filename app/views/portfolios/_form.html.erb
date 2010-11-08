@@ -7,7 +7,7 @@
 	<%= render 'errors' if @portfolio.errors.any? %>
 
   <div class="field group">
-  	<%= f.text_field :title %>
+  	<%= f.text_field :title, :placeholder => "Portfolio Title" %>
   </div>
   
   <div class="portfolio-edit-photos">
