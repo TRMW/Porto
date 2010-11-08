@@ -7,7 +7,7 @@
 <% @portfolio.photos.each_with_index do |photo, index| %>
 
 	<% if photo == @portfolio.photos.last %>
-		<%= image_tag photo.image.url, :class => "portfolio-photo portfolio-photo-last", :id => "photo_#{index}" %>
+		<%= image_tag photo.image.url, :class => "portfolio-photo-last", :id => "photo_#{index}" %>
 	<% else %>
   	<%= image_tag photo.image.url, :class => "portfolio-photo", :id => "photo_#{index}" %>
   <% end %>

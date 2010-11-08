@@ -139,7 +139,8 @@ main {
 	cursor: default;
 	}
 		
-.portfolio-photo {
+.portfolio-photo,
+.portfolio-photo-last {
 	display: none;
 	left: 0;
 	position: absolute;
@@ -330,6 +331,8 @@ label {
 	margin-bottom: 5px;
 	}
 	
+iframe { border-bottom: none; }
+	
 .settings .select-field label {
 	display: inline;
 	}
@@ -361,6 +364,16 @@ label {
 	border: none;
 	}
 	
+#bio_parent .mceIframeContainer,
+#post_body_parent .mceIframeContainer {
+	border-bottom: none;
+	}
+	
+#tinymce {
+	padding: 10px !important;
+	margin: 0 !important;
+	}
+
 textarea {
 	width: 697px;
 	height: 300px;
