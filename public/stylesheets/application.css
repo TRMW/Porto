@@ -283,6 +283,10 @@ content.portfolios-edit .portfolio-new-photo {
 	margin-top: 0;
 	}
 	
+.news-post .post-body a {
+	text-decoration: underline;
+	}
+	
 /* !Settings */
 
 .first {

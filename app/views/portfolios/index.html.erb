@@ -41,8 +41,8 @@
 	  		<%= link_to image_tag(post.image.url(:thumb)), edit_admin_post_path(post) %>
 	  	</div>
 	    <div class="actions">
-	    	<%= link_to 'View', post, :class => 'portfolio-edit-link' %>
-	    	<%= link_to 'Delete', admin_post_path(post), :confirm => 'Are you sure?', :method => :delete, :class => 'portfolio-delete-link' %>
+	    	<%= link_to 'View', post, :class => 'left' %>
+	    	<%= link_to 'Delete', admin_post_path(post), :confirm => 'Are you sure?', :method => :delete, :class => 'right' %>
 	    </div>
 	  </div><!-- end post blocks -->
 	<% end %>
