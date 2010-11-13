@@ -2,7 +2,9 @@
 	<%= javascript_include_tag 'portfolio' %>
 <% end %>
 
-<% content_for :title do @portfolio.title.downcase end %>
+<% if request.url != root_url %>
+	<% content_for :title, @portfolio.title.downcase %>
+<% end %>
 		
 <% @portfolio.photos.each_with_index do |photo, index| %>
 
