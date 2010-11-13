@@ -22,9 +22,9 @@
 		<h1><%= link_to 'DRU DONOVAN', root_path %></h1>
 		
 		<ul id="nav">
-			<li id="news-link"><a href="/posts">news</a></li>
-			<li id="bio-link"><a href="/bio">bio</a></li>
-			<li id="contact-link"><a href="/contact">contact</a></li>
+			<li id="news-link"><%= link_to 'news', posts_path %></li>
+			<li id="bio-link"><%= link_to 'bio', bio_path %></li>
+			<li id="contact-link"><%= link_to 'contact', contact_path %></li>
 		</ul>
 		
 		<% if controller.controller_name == 'portfolios' && controller.action_name == 'show' %>
