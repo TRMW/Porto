@@ -5,53 +5,53 @@
 <% content_for :title do "admin" end %>
 
 <h2>Portfolios</h2>
-<div class="portfolio-edit-photos group">
-	<%= form_tag(portfolio_position_path, :remote => true, :id => 'portfolio_position') do %>
+
+<div class="blocks group">
+	<%= form_tag(set_position_path, :remote => true, :id => 'portfolio_position') do %>
 		<% @portfolios.each do |portfolio| %>
-		  <div class="field portfolio-edit-photo">
-		  	<div class="photo-wrapper">
+		  <div class="field block draggable">
+		  	<div class="title"><%= link_to portfolio.title, edit_admin_portfolio_path(portfolio) %></div>
+		  	<div class="image-wrapper">
 		  		<%= link_to image_tag(portfolio.photos.first.image.url(:thumb)), edit_admin_portfolio_path(portfolio) %>
 		  	</div>
-		    <div class="edit-actions">
-		    	<%= link_to 'View', portfolio, :class => 'portfolio-edit-link' %>
-		    	<%= link_to 'Delete', portfolio, :confirm => 'Are you sure?', :method => :delete, :class => 'portfolio-delete-link' %>
+		    <div class="actions">
+		    	<%= link_to 'View', portfolio, :class => 'left' %>
+		    	<%= link_to 'Delete', portfolio, :confirm => 'Are you sure?', :method => :delete, :class => 'right' %>
 		    </div>
-		    <div class="title"><%= link_to portfolio.title, edit_admin_portfolio_path(portfolio) %></div>
 		    <%= hidden_field_tag "portfolios[#{portfolio.id}]", portfolio.position, :id => "position_#{portfolio.id}" %>
 		  </div>
-		 <% end %>
-	<% end %>
+		 <% end %><!-- end portfolio blocks -->
+	<% end %><!-- end portfolio position form -->
 	
-	<div class="field portfolio-edit-photo">
-		<div class="image-placeholder"><span><%= link_to 'add portfolio', new_admin_portfolio_path, :class => 'new-portfolio-link' %></span></div>
-	  <div class="edit-actions">
-	  	&nbsp;
-	  </div>
-	</div>
+	<div class="field block">
+		<div class="image-placeholder"><%= link_to 'add portfolio', new_admin_portfolio_path %></div>
+	  <div class="actions"></div>
+	</div><!-- end new portfolio block -->
+	
 </div>
 
 <h2>News</h2>
 
-<div class="news-listing group">
+<div class="group">
+
 	<% for post in @posts do %>
-	  <div class="field portfolio-edit-photo">
-	  	<div class="photo-wrapper">
+	  <div class="field block">
+	  	<div class="title"><%= link_to post.title, edit_admin_post_path(post) %></div>
+	  	<div class="image-wrapper">
 	  		<%= link_to image_tag(post.image.url(:thumb)), edit_admin_post_path(post) %>
 	  	</div>
-	    <div class="edit-actions">
+	    <div class="actions">
 	    	<%= link_to 'View', post, :class => 'portfolio-edit-link' %>
 	    	<%= link_to 'Delete', admin_post_path(post), :confirm => 'Are you sure?', :method => :delete, :class => 'portfolio-delete-link' %>
 	    </div>
-	    <div class="title"><%= link_to post.title, edit_admin_post_path(post) %></div>
-	  </div>
+	  </div><!-- end post blocks -->
 	<% end %>
 	
-	<div class="field portfolio-edit-photo">
+	<div class="field block">
 		<div class="image-placeholder"><span><%= link_to 'add news', new_admin_post_path, :class => 'new-portfolio-link' %></span></div>
-	  <div class="edit-actions">
-	  	&nbsp;
-	  </div>
-	</div>
+	  <div class="actions"></div>
+	</div><!-- end new post block -->
+	
 </div>
 
 <h2>Settings</h2>

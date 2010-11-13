@@ -7,6 +7,8 @@
   <%= include_tiny_mce_if_needed %>
   <%= yield :script %>
   <%= csrf_meta_tag %>
+  <meta name="description" content="Official website and portfolio of photographer Dru Donovan." /> 
+  <meta name="keywords" content="Dru Donovan, photography">
   
   <!--[if lt IE9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -31,18 +33,18 @@
 			<li id="next-link"><a href="#">next</a></li>
 		</ul>
 		<% end %>
-		
 	</header>
 	
-	<p id="notice"><%= notice %></p>
+	<% if notice %>
+		<div id="notice"><%= notice %></div>
+	<% end %>
 	
 	<main>
+		<% if controller.controller_name == 'portfolios' && controller.action_name == 'show' && Settings.show_portfolios == 'true'%>
+			<%= render :partial => 'portfolios/portfolio_nav' %>
+		<% end %>
 	
-	<% if controller.controller_name == 'portfolios' && controller.action_name == 'show' && Settings.show_portfolios == 'true'%>
-		<%= render :partial => 'portfolios/portfolio_nav' %>
-	<% end %>
-
-	<%= yield %>
+		<%= yield %>
 	</main>
 
 </content>

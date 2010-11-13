@@ -1,6 +1,7 @@
 <div class="news-post group">
-	<%= image_tag post.image.url, :alt => post.title %>
-	<h3><%= post.title %> <%= link_to post.created_at.strftime('%b %d, %Y'), post %></h3>
+	<%= image_tag post.image.url, :alt => post.title, :width => "348px" %>
+	<h3><%= post.title %></h3>
+	<span class="post-date"><%= link_to post.created_at.strftime('%b %d, %Y'), post %></span>
 	<div class="post-body">
 		<%= raw post.body %>
 	</div>

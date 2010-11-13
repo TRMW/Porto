@@ -1,6 +1,6 @@
 $(document).ready(function(){
-	$('.portfolio-edit-photos').sortable({
-		items: '.portfolio-edit-photo',
+	$('.blocks').sortable({
+		items: '.block',
 		tolerance: 'pointer',
 		stop: function(){
 			$("[id$='position']").each(function(i){

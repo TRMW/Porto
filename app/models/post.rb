@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+	validates_presence_of :title, :body
+	validates_attachment_presence :image
   has_attached_file :image,
   									:styles => { :default => "350x278>", :thumb => "223x223>" },
   									:default_style => :default,

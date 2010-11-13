@@ -150,26 +150,13 @@ content.portfolios-show img {
 #photo_0 {
 	display: inline;
 	}
-	
-/* !Portfolio Index */
 
-.portfolio-edit-link {
-	float: left;
-}
-
-.portfolio-delete-link {
-	float: right;
-}
-
-.new-portfolio-link {
-	text-decoration: underline;
-	}
-
-/* !Edit Portfolio */
+/* !Edit */
 
 content.portfolios-new,
 content.portfolios-edit,
-content.portfolios-index {
+content.portfolios-index,
+content.portfolios-create {
 	width: 730px;
 	-moz-user-select: none;
   -webkit-user-select: none;
@@ -186,7 +173,7 @@ content.portfolios-index {
 	width: 221px;
 	}
 
-.portfolio-edit-photo {
+.block {
 	float: left;
 	background: black;
 	color: white;
@@ -195,25 +182,30 @@ content.portfolios-index {
 	width: 223px;
 	position: relative;
 	}
-
-.draggable {
-	cursor: move;
+	
+.block .actions {
+	font-weight: bold;
+	margin-top: 10px;
+	margin-bottom: 5px;
+	height: 20px;
+	overflow: hidden;	
 	}
 
+content.portfolios-new .portfolio-new-photo,
 content.portfolios-edit .portfolio-new-photo {
 	cursor: default;
 	}
 		
-.photo-wrapper {
+.image-wrapper {
 	height: 180px;
 	overflow: hidden;
 	}
 
-.portfolio-edit-photo a {
+.block a {
 	color: white;
 	}
 	
-.title, .position {
+.block .title {
 	position: absolute;
 	left: 5px;
 	top: 5px;
@@ -223,24 +215,13 @@ content.portfolios-edit .portfolio-new-photo {
 	padding: 5px 10px 10px 5px;
 	}
 	
-.first {
-	clear: left;
-	}
-	
-.edit-actions {
-	margin-top: 10px;
-	margin-bottom: 5px;
-	height: 20px;
-	overflow: hidden;
-	}
-	
-.portfolio-edit-photo input[type="file"]{
+.block input[type="file"]{
 	width: 223px;
 	color: white;
 	background-color: black;
 	}
 	
-.portfolio-options {
+.options {
 	font-weight: bold;
 	margin-bottom: 10px;
 	clear: left;
@@ -248,17 +229,8 @@ content.portfolios-edit .portfolio-new-photo {
 	width: 720px;
 	}
 	
-.add-photos-link {
-	float: left;
+.options a {
 	text-decoration: underline;
-	}
-	
-.portfolio-visible-check {
-	float: right;
-	}
-
-.remove-check {
-	float: right;
 	}
 
 .image-placeholder {
@@ -268,18 +240,21 @@ content.portfolios-edit .portfolio-new-photo {
 	position: relative;
 	}
 
+.image-placeholder a,
 .image-placeholder span {
 	padding-top: 78px;
 	display: block;
 	text-align: center;
 	font-size: 150%;
 	font-weight: bold;
+	text-decoration: underline;
 	}
 	
 /* !News Posts */
 
 .news-post {
 	margin-bottom: 20px;
+	line-height: 22px;
 	}
 	
 .news-post img {
@@ -287,19 +262,21 @@ content.portfolios-edit .portfolio-new-photo {
 	margin-right: 20px;
 	}
 	
-.news-post h3,
+.news-post h3 {
+	float: left;
+	width: 260px;
+	margin-top: 0;
+	margin-bottom: 14px;
+	}
+	
+.news-post .post-date {
+	float: right;
+	width: 90px;
+	}
+	
 .news-post .post-body {
 	float: left;
-	width: 278px;
-	}
-	
-.news-post h3 {
-	margin-top: 0;
-	}
-	
-.news-post h3 a {
-	font-weight: normal;
-	font-size: 14px;
+	width: 350px;
 	}
 	
 .news-post .post-body p {
@@ -395,42 +372,46 @@ div.field, div.actions {
   margin-bottom: 10px;
 	}
 
+#notice,
+#error-explanation {
+  margin: 20px 10px 20px 0;
+	}
+	
+#notice,
+.error-title {
+	color: white;
+	font-weight: bold;
+	padding: 5px;
+	}
+	
 #notice {
-  color: green;
+  background-color: green;
 	}
 
+#error-explanation {
+  border: 2px solid #c00;
+	}
+
+.error-title {
+  background-color: #c00;
+	}
+
+#error-explanation ul {
+	margin: 10px 10px 10px 40px;
+	}
+
+#error-explanation li {
+	list-style-type: disc;
+	padding: 5px;
+	}
+	
 .field_with_errors {
   padding: 2px;
   background-color: red;
   display: table;
 	}
-
-#error_explanation {
-  width: 450px;
-  border: 2px solid red;
-  padding: 7px;
-  padding-bottom: 0;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
-	}
-
-#error_explanation h2 {
-  text-align: left;
-  font-weight: bold;
-  padding: 5px 5px 5px 15px;
-  font-size: 12px;
-  margin: -7px;
-  margin-bottom: 0px;
-  background-color: #c00;
-  color: #fff;
-	}
-
-#error_explanation ul li {
-  font-size: 12px;
-  list-style: square;
-	}
 	
-/* Self-Clearing Floats */
+/* Utility Classes */
 .group:after {
 	content: ".";
 	display: block;
@@ -441,4 +422,20 @@ div.field, div.actions {
 
 :first-child+html .group {
 	min-height: 1px;
+	}
+	
+.first {
+	clear: left;
+	}
+	
+.left {
+	float: left;
+	}
+	
+.right {
+	float: right;
+	}
+	
+.draggable {
+	cursor: move;
 	}

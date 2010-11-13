@@ -56,6 +56,9 @@ class PortfoliosController < ApplicationController
         format.html { redirect_to(@portfolio, :notice => 'Portfolio created.') }
         format.xml  { render :xml => @portfolio, :status => :created, :location => @portfolio }
       else
+        6.times do
+		    	@portfolio.photos.build
+		    end
         format.html { render :action => "new" }
         format.xml  { render :xml => @portfolio.errors, :status => :unprocessable_entity }
       end
@@ -99,7 +102,7 @@ class PortfoliosController < ApplicationController
     end
   end
   
-  def position
+  def set_position
   	params[:portfolios].each do |key, value|
   		logger.info "key = #{key} and value = #{value}"
   		Portfolio.find(key).update_attribute('position', value)
