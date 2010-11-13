@@ -283,7 +283,8 @@ content.portfolios-edit .portfolio-new-photo {
 	margin-top: 0;
 	}
 	
-.news-post .post-body a {
+.news-post .post-body a,
+#post_body a {
 	text-decoration: underline;
 	}
 	
