@@ -288,6 +288,12 @@ content.portfolios-edit .portfolio-new-photo {
 	text-decoration: underline;
 	}
 	
+/* !Bio */
+
+content.portolio-bios p {
+	line-height: 22px;
+	}
+	
 /* !Settings */
 
 .first {
