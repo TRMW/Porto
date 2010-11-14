@@ -32,16 +32,16 @@ h1 a:visited {
 	color: black;
 	}
 	
-.last {
-	margin-right: 0 !important;
+label {
+	font-weight: bold;
+	}
+	
+textarea {
+	width: 697px;
+	height: 300px;
 	}
 	
 /* !Layout */
-
-header h1 {
-	float: left; 
-	margin-right: 15px;
-	}
 	
 content {
 	display: block;
@@ -54,6 +54,11 @@ header {
 	margin-bottom: 20px;
 	line-height: 14px;
 	position: relative;
+	}
+	
+header h1 {
+	float: left; 
+	margin-right: 15px;
 	}
 	
 main {
@@ -97,7 +102,7 @@ main {
 	font-weight: normal;
 	}
 	
-/* !View Portfolio */
+/* !Portfolio Navigation */
 
 #portfolio-nav {
 	bottom: 0;
@@ -134,13 +139,15 @@ main {
 	border: solid 1px silver;
 	cursor: default;
 	}
-		
+
+/* !View Portfolio */
+
 .portfolio-photo,
 .portfolio-photo-last {
 	display: none;
-	left: 0;
 	position: absolute;
 	top: 0;
+	left: 0;
 	}
 	
 content.portfolios-show img {
@@ -157,7 +164,7 @@ content.portfolios-new,
 content.portfolios-edit,
 content.portfolios-index,
 content.portfolios-create {
-	width: 730px;
+	width: 730px; /* extra room to the right so we don't have to add a .last class to every third photo */
 	-moz-user-select: none;
   -webkit-user-select: none;
 	}
@@ -294,10 +301,6 @@ content.portfolios-bio p {
 	
 /* !Settings */
 
-.first {
-	clear: left;
-	}
-
 .settings .field {
 	float: left;
 	margin-right: 10px;
@@ -308,16 +311,10 @@ content.portfolios-bio p {
 	margin-bottom: 10px;
 	}
 	
-label {
-	font-weight: bold;
-	}
-	
 .settings label {
 	display: block;
 	margin-bottom: 5px;
 	}
-	
-iframe { border-bottom: none; }
 	
 .settings .select-field label {
 	display: inline;
@@ -329,44 +326,35 @@ iframe { border-bottom: none; }
   font-size:   14px;
   border: solid 1px black;
   padding: 10px;
+ 	height: 40px;
+	width: 233px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 	}
 
-.settings input[type="text"],
-.settings select {
-	height: 40px;
-	width: 233px;
+.settings input[type="submit"] {
+	clear: left;
 	}
 	
-#bio_parent .mceLayout,
-#post_body_parent .mceLayout {
-	border: solid 1px black;
-	}
-	
-#bio_parent .mceLayout tr.mceFirst td,
-#post_body_parent .mceLayout tr.mceFirst td {
-	border: none;
-	}
-	
-#bio_parent .mceIframeContainer,
-#post_body_parent .mceIframeContainer {
-	border-bottom: none;
-	}
+/* TinyMCE Styles */
 	
 #tinymce {
 	padding: 10px !important;
 	margin: 0 !important;
 	}
-
-textarea {
-	width: 697px;
-	height: 300px;
+	
+iframe,
+#bio_parent .mceLayout tr.mceFirst td,
+#post_body_parent .mceLayout tr.mceFirst td,
+#bio_parent .mceIframeContainer,
+#post_body_parent .mceIframeContainer {
+	border-bottom: none;
 	}
 	
-.settings input[type="submit"] {
-	clear: left;
+#bio_parent .mceLayout,
+#post_body_parent .mceLayout {
+	border: solid 1px black;
 	}
 	
 /* !Default Rails Styles */
@@ -435,6 +423,10 @@ div.field, div.actions {
 	
 .first {
 	clear: left;
+	}
+
+.last {
+	margin-right: 0 !important;
 	}
 	
 .left {
