@@ -25,6 +25,7 @@ gem 'paperclip'
 gem 'acts_as_list'
 gem 'rails-settings', :require => 'settings'
 gem 'tiny_mce'
+gem 'hoptoad_notifier'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
