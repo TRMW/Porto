@@ -14,6 +14,10 @@ Dru::Application.routes.draw do
 	resources :portfolios, :only => :show
   resources :posts, :only => [ :show, :index ], :path => '/news'
 	
-	root :to => "portfolios#show", :id => Settings.front_portfolio
+	root :to => 'portfolios#show', :id => Settings.front_portfolio
+	
+	match '/bio.html' => redirect('/bio')
+	match '/1.html' => redirect('/')
+	match '/2.html' => redirect('/')
 	
 end
