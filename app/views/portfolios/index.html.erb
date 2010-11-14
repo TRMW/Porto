@@ -1,85 +1,85 @@
-<% content_for :script do %>
+	<% content_for :script do %>
 	<%= javascript_include_tag 'admin' %>
-<% end %>
-
-<% content_for :title do "admin" end %>
-
-<h2>Portfolios</h2>
-
-<div class="blocks group">
-	<%= form_tag(set_position_path, :remote => true, :id => 'portfolio_position') do %>
-		<% @portfolios.each do |portfolio| %>
-		  <div class="field block draggable">
-		  	<div class="title"><%= link_to portfolio.title, edit_admin_portfolio_path(portfolio) %></div>
-		  	<div class="image-wrapper">
-		  		<%= link_to image_tag(portfolio.photos.first.image.url(:thumb)), edit_admin_portfolio_path(portfolio) %>
-		  	</div>
-		    <div class="actions">
-		    	<%= link_to 'View', portfolio, :class => 'left' %>
-		    	<%= link_to 'Delete', portfolio, :confirm => 'Are you sure?', :method => :delete, :class => 'right' %>
-		    </div>
-		    <%= hidden_field_tag "portfolios[#{portfolio.id}]", portfolio.position, :id => "position_#{portfolio.id}" %>
-		  </div>
-		 <% end %><!-- end portfolio blocks -->
-	<% end %><!-- end portfolio position form -->
-	
-	<div class="field block">
-		<div class="image-placeholder"><%= link_to 'add portfolio', new_admin_portfolio_path %></div>
-	  <div class="actions"></div>
-	</div><!-- end new portfolio block -->
-	
-</div>
-
-<h2>News</h2>
-
-<div class="group">
-
-	<% for post in @posts do %>
-	  <div class="field block">
-	  	<div class="title"><%= link_to post.title, edit_admin_post_path(post) %></div>
-	  	<div class="image-wrapper">
-	  		<%= link_to image_tag(post.image.url(:thumb)), edit_admin_post_path(post) %>
-	  	</div>
-	    <div class="actions">
-	    	<%= link_to 'View', post, :class => 'left' %>
-	    	<%= link_to 'Delete', admin_post_path(post), :confirm => 'Are you sure?', :method => :delete, :class => 'right' %>
-	    </div>
-	  </div><!-- end post blocks -->
 	<% end %>
 	
-	<div class="field block">
-		<div class="image-placeholder"><%= link_to 'add news', new_admin_post_path %></div>
-	  <div class="actions"></div>
-	</div><!-- end new post block -->
+	<% content_for :title do "admin" end %>
 	
-</div>
-
-<h2>Settings</h2>
-
-<div class="settings">
-	<%= form_tag('/settings') do %>
-		<div class="field">
-			<%= label_tag 'front_portfolio', 'Front Portfolio' %>
-			<%= select_tag 'front_portfolio', options_from_collection_for_select(@portfolios, 'id', 'title', Settings.front_portfolio) %>		
+	<h2>Portfolios</h2>
+	
+	<div class="blocks group">
+		<%= form_tag(set_position_path, :remote => true, :id => 'portfolio_position') do %>
+			<% @portfolios.each do |portfolio| %>
+			<div class="field block draggable">
+				<div class="title"><%= link_to portfolio.title, edit_admin_portfolio_path(portfolio) %></div>
+				<div class="image-wrapper">
+					<%= link_to image_tag(portfolio.photos.first.image.url(:thumb)), edit_admin_portfolio_path(portfolio) %>
+				</div>
+			<div class="actions">
+				<%= link_to 'View', portfolio, :class => 'left' %>
+				<%= link_to 'Delete', portfolio, :confirm => 'Are you sure?', :method => :delete, :class => 'right' %>
+			</div>
+			<%= hidden_field_tag "portfolios[#{portfolio.id}]", portfolio.position, :id => "position_#{portfolio.id}" %>
+			</div>
+			 <% end %><!-- end portfolio blocks -->
+		<% end %><!-- end portfolio position form -->
+		
+		<div class="field block">
+			<div class="image-placeholder"><%= link_to 'add portfolio', new_admin_portfolio_path %></div>
+		<div class="actions"></div>
+		</div><!-- end new portfolio block -->
+		
+	</div>
+	
+	<h2>News</h2>
+	
+	<div class="group">
+	
+		<% for post in @posts do %>
+		<div class="field block">
+			<div class="title"><%= link_to post.title, edit_admin_post_path(post) %></div>
+			<div class="image-wrapper">
+				<%= link_to image_tag(post.image.url(:thumb)), edit_admin_post_path(post) %>
+			</div>
+		<div class="actions">
+			<%= link_to 'View', post, :class => 'left' %>
+			<%= link_to 'Delete', admin_post_path(post), :confirm => 'Are you sure?', :method => :delete, :class => 'right' %>
 		</div>
-		<div class="field select-field">
-			<%= label_tag 'show_portfolios', 'Show portfolio listing?' %>
-			<%= check_box_tag 'show_portfolios', 'true', (Settings.show_portfolios == 'true') %>
-		</div>
-		<div class="field first">
-			<%= label_tag 'email' %>
-			<%= text_field_tag 'email', Settings.email %>
-		</div>
-		<div class="field">
-			<%= label_tag 'phone' %>
-			<%= text_field_tag 'phone', Settings.phone %>
-		</div>
-		<div id="bio-field" class="field">
-			<%= label_tag 'bio' %>
-			<%= text_area_tag 'bio', Settings.bio, :class => "mceEditor" %>
-		</div>
-		<div class="field">
-			<%= submit_tag "Update Settings" %>
-		</div>
-	<% end %>
-</div>
+		</div><!-- end post blocks -->
+		<% end %>
+		
+		<div class="field block">
+			<div class="image-placeholder"><%= link_to 'add news', new_admin_post_path %></div>
+		<div class="actions"></div>
+		</div><!-- end new post block -->
+		
+	</div>
+	
+	<h2>Settings</h2>
+	
+	<div class="settings">
+		<%= form_tag('/settings') do %>
+			<div class="field">
+				<%= label_tag 'front_portfolio', 'Front Portfolio' %>
+				<%= select_tag 'front_portfolio', options_from_collection_for_select(@portfolios, 'id', 'title', Settings.front_portfolio) %>		
+			</div>
+			<div class="field select-field">
+				<%= label_tag 'show_portfolios', 'Show portfolio listing?' %>
+				<%= check_box_tag 'show_portfolios', 'true', (Settings.show_portfolios == 'true') %>
+			</div>
+			<div class="field first">
+				<%= label_tag 'email' %>
+				<%= text_field_tag 'email', Settings.email %>
+			</div>
+			<div class="field">
+				<%= label_tag 'phone' %>
+				<%= text_field_tag 'phone', Settings.phone %>
+			</div>
+			<div id="bio-field" class="field">
+				<%= label_tag 'bio' %>
+				<%= text_area_tag 'bio', Settings.bio, :class => "mceEditor" %>
+			</div>
+			<div class="field">
+				<%= submit_tag "Update Settings" %>
+			</div>
+		<% end %>
+	</div>

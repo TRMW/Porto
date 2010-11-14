@@ -52,7 +52,7 @@ $(document).ready(function(){
 		i = 0;
 	});
 	
-	$('.photo-replace-link').click(function(){
+	$('#photo-replace-link').click(function(){
 		$(this).next('input:file').show();
 		$(this).siblings('.remove-check').hide();
 		$(this).hide();

@@ -1,22 +1,22 @@
-<%= form_for([:admin, @post], :html => { :multipart => true }) do |f| %>
-  <%= render :partial => 'common/errors', :locals => { :object => @post } if @post.errors.any? %>
-
-  <div class="field">
-    <%= f.text_field :title, :placeholder => "Post Title" %>
-  </div>
-  <div class="field">
-    <%= f.text_area :body, :class => "mceEditor" %>
-  </div>
-  <% if f.object.image? %>
-	  <div class="field">
-	  	<%= image_tag f.object.image(:thumb) %>
-	  </div>
-  <% end %>
-  <div class="field">
-  	<%= f.label :image %>
-    <%= f.file_field :image %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+	<%= form_for([:admin, @post], :html => { :multipart => true }) do |f| %>
+	<%= render :partial => 'common/errors', :locals => { :object => @post } if @post.errors.any? %>
+	
+	<div class="field">
+	<%= f.text_field :title, :placeholder => "Post Title" %>
+	</div>
+	<div class="field">
+	<%= f.text_area :body, :class => "mceEditor" %>
+	</div>
+	<% if f.object.image? %>
+		<div class="field">
+			<%= image_tag f.object.image(:thumb) %>
+		</div>
+	<% end %>
+	<div class="field">
+		<%= f.label :image %>
+	<%= f.file_field :image %>
+	</div>
+	<div class="actions">
+	<%= f.submit %>
+	</div>
+	<% end %>
