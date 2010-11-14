@@ -190,11 +190,6 @@ content.portfolios-create {
 	height: 20px;
 	overflow: hidden;	
 	}
-
-content.portfolios-new .portfolio-new-photo,
-content.portfolios-edit .portfolio-new-photo {
-	cursor: default;
-	}
 		
 .image-wrapper {
 	height: 180px;
@@ -247,6 +242,9 @@ content.portfolios-edit .portfolio-new-photo {
 	text-align: center;
 	font-size: 150%;
 	font-weight: bold;
+	}
+	
+.image-placeholder a {
 	text-decoration: underline;
 	}
 	
@@ -447,6 +445,6 @@ div.field, div.actions {
 	float: right;
 	}
 	
-.draggable {
+.sortable {
 	cursor: move;
 	}

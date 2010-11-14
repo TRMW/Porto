@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	$('.blocks').sortable({
-		items: '.block',
+		items: '.sortable',
 		tolerance: 'pointer',
 		stop: function(){
 			$("[id$='position']").each(function(i){

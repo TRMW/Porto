@@ -9,7 +9,7 @@
 	<div class="blocks group">
 		<%= form_tag(set_position_path, :remote => true, :id => 'portfolio_position') do %>
 			<% @portfolios.each do |portfolio| %>
-			<div class="field block draggable">
+			<div class="field block sortable">
 				<div class="title"><%= link_to portfolio.title, edit_admin_portfolio_path(portfolio) %></div>
 				<div class="image-wrapper">
 					<%= link_to image_tag(portfolio.photos.first.image.url(:thumb)), edit_admin_portfolio_path(portfolio) %>

@@ -12,7 +12,7 @@
 	<div class="blocks group">
 		<%= f.fields_for :photos do |photo_form| %>
 		
-			<div class="field block draggable<%= " portfolio-new-photo" if photo_form.object.new_record? %>">
+			<div class="field block <%= " sortable" if !photo_form.object.new_record? %>">
 				<div class="title"><%= photo_form.object.position %></div>
 				
 				<% if !photo_form.object.new_record? %>
@@ -28,13 +28,13 @@
 						<span class="right">
 							<%= photo_form.check_box '_destroy' %>
 							<%= photo_form.label '_destroy', 'Remove' %>
-					</span>
-					<%= photo_form.hidden_field :position %>
+						</span>
+						<%= photo_form.hidden_field :position %>
 					
 					<% else %>
 						<%= photo_form.file_field :image %>
 					<% end %>
-			</div>
+				</div>
 			</div>
 				
 			<% end %>
