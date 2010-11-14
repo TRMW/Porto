@@ -1,0 +1,11 @@
+<ul id="portfolios">
+<% for portfolio in @portfolios %>
+	<% if portfolio.visible? %>
+		<% if portfolio.id != @portfolio.id && portfolio.id != controller.id %>
+			<li><%= link_to portfolio.title.downcase, portfolio, :class => 'portfolio-link' %></li>
+		<% else %>
+			<li><%= portfolio.title.downcase %></li>
+		<% end %>
+	<% end %>
+<% end %>
+</ul>
