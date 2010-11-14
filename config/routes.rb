@@ -16,7 +16,7 @@ Dru::Application.routes.draw do
 	
 	root :to => 'portfolios#show', :id => Settings.front_portfolio
 	
-	match '/bio.html' => redirect('/bio')
+	# redirect URLs from old site
 	match '/1.html' => redirect('/')
 	match '/2.html' => redirect('/')
 	
