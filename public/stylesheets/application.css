@@ -280,16 +280,13 @@ article time {
 	width: 90px;
 	}
 	
-article section {
+article p {
 	float: left;
 	width: 350px;
-	}
-	
-article section p {
 	margin-top: 0;
 	}
 	
-article section a,
+article  a,
 #tinymce a {
 	text-decoration: underline;
 	}
