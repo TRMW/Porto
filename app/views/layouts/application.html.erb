@@ -31,17 +31,21 @@
 	<header class="group">
 		<h1><%= link_to 'DRU DONOVAN', root_path %></h1>
 		
-		<ul id="nav">
-			<li id="news-link"><%= link_to 'news', posts_path %></li>
-			<li id="bio-link"><%= link_to 'bio', bio_path %></li>
-			<li id="contact-link"><%= link_to 'contact', contact_path %></li>
-		</ul>
+		<nav>
+			<ul id="nav">
+				<li id="news-link"><%= link_to 'news', posts_path %></li>
+				<li id="bio-link"><%= link_to 'bio', bio_path %></li>
+				<li id="contact-link"><%= link_to 'contact', contact_path %></li>
+			</ul>
+		</nav>
 		
 		<% if controller.controller_name == 'portfolios' && controller.action_name == 'show' %>
-		<ul id="portfolio-nav">
-			<li id="previous-link" class="inactive">previous</li>
-			<li id="next-link"><a href="#">next</a></li>
-		</ul>
+		<nav>
+			<ul id="portfolio-nav">
+				<li id="previous-link" class="inactive">previous</li>
+				<li id="next-link"><a href="#">next</a></li>
+			</ul>
+		</nav>
 		<% end %>
 	</header>
 	
@@ -49,13 +53,13 @@
 		<div id="notice"><%= notice %></div>
 	<% end %>
 	
-	<main>
+	<section class="main">
 		<% if controller.controller_name == 'portfolios' && controller.action_name == 'show' && Settings.show_portfolios == 'true'%>
 		<%= render :partial => 'portfolios/nav' %>
 		<% end %>
 	
 		<%= yield %>
-	</main>
+	</section>
 
 </content>
 

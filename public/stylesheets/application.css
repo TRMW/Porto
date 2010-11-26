@@ -50,7 +50,6 @@ content {
 	}
 	
 header {
-	display: block;
 	margin-bottom: 20px;
 	line-height: 14px;
 	position: relative;
@@ -61,7 +60,7 @@ header h1 {
 	margin-right: 15px;
 	}
 	
-main {
+.main {
 	display: block;
 	position: relative;
 	}
@@ -257,38 +256,40 @@ content.portfolios-create {
 	
 /* !News Posts */
 
-.news-post {
+article {
 	margin-bottom: 20px;
 	line-height: 22px;
 	}
 	
-.news-post img {
+article img {
 	float: left;
 	margin-right: 20px;
 	}
 	
-.news-post h3 {
-	float: left;
-	width: 260px;
+article h1 {
+	font-size: 16px;
+	line-height: 22px;
+	width: 245px;
 	margin-top: 0;
 	margin-bottom: 14px;
 	}
 	
-.news-post .post-date {
+article time {
 	float: right;
+	text-align: right;
 	width: 90px;
 	}
 	
-.news-post .post-body {
+article section {
 	float: left;
 	width: 350px;
 	}
 	
-.news-post .post-body p {
+article section p {
 	margin-top: 0;
 	}
 	
-.news-post .post-body a,
+article section a,
 #tinymce a {
 	text-decoration: underline;
 	}
@@ -440,3 +441,6 @@ div.field, div.actions {
 .sortable {
 	cursor: move;
 	}
+
+/* make browsers that don't recognize html5 elements render tham as blocks */
+article,aside,details,figcaption,figure, footer,header,hgroup,menu,nav,section {  display:block; }
