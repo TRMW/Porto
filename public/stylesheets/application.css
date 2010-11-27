@@ -256,44 +256,44 @@ content.portfolios-create {
 	
 /* !News Posts */
 	
-article {
+article.post {
 	margin-bottom: 20px;
 	margin-left: 370px;
 	line-height: 22px;
 	position: relative;
 	}
 	
-article header {
+article.post header {
 	line-height: 22px;
 	margin-bottom: 15px;
 	}
 	
-article h1 {
+article.post h1 {
 	font-size: 16px;
 	width: 245px;
 	}
 	
-article time {
+article.post time {
 	float: right;
 	text-align: right;
 	width: 90px;
 	}
 	
-article time a {
+article.post time a {
 	text-decoration: none;
 	}
 	
-article img {
+article.post img {
 	position: absolute;
 	left: -370px;
 	top: 0;
 	}
 	
-article p {
+article.post p {
 	margin-top: 0;
 	}
 	
-article a,
+article.post a,
 #tinymce a {
 	text-decoration: underline;
 	}
