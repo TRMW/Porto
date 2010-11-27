@@ -4,6 +4,8 @@
 			<h1><%= post.title %></h1>
 			<time datetime="<%= post.created_at.to_date %>" pubdate><%= link_to post.created_at.strftime('%b %d, %Y'), post %></time>
 		</header>
-		<%= raw post.body %>
+		<section>
+			<%= raw post.body %>
+		</section>
 	</article>
 	
