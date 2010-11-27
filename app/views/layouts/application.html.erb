@@ -26,12 +26,11 @@
 </head>
 <body>
 
-<content class="group <%= controller.controller_name %>-<%= controller.action_name %>">
 
 	<header class="group">
 		<h1><%= link_to 'DRU DONOVAN', root_path %></h1>
 		
-		<nav>
+		<nav title="Site Navigation">
 			<ul id="nav">
 				<li id="news-link"><%= link_to 'news', posts_path %></li>
 				<li id="bio-link"><%= link_to 'bio', bio_path %></li>
@@ -40,7 +39,7 @@
 		</nav>
 		
 		<% if controller.controller_name == 'portfolios' && controller.action_name == 'show' %>
-		<nav>
+		<nav title="Portfolio Navigation">
 			<ul id="portfolio-nav">
 				<li id="previous-link" class="inactive">previous</li>
 				<li id="next-link"><a href="#">next</a></li>
@@ -61,7 +60,6 @@
 		<%= yield %>
 	</section>
 
-</content>
 
 </body>
 </html>
