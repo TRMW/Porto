@@ -13,16 +13,6 @@
 <!--[if lt IE9]>
 <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
-<script type="text/javascript">
-	var _gaq = _gaq || [];
-	_gaq.push(['_setAccount', 'UA-10568419-2']);
-	_gaq.push(['_trackPageview']);
-	(function() {
-		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	})();
-</script>
 </head>
 <body>
 
@@ -31,7 +21,7 @@
 	<header class="group">
 		<h1><%= link_to 'DRU DONOVAN', root_path %></h1>
 		
-		<nav title="Site Navigation">
+		<nav>
 			<ul id="nav">
 				<li id="news-link"><%= link_to 'news', posts_path %></li>
 				<li id="bio-link"><%= link_to 'bio', bio_path %></li>
@@ -40,7 +30,7 @@
 		</nav>
 		
 		<% if controller.controller_name == 'portfolios' && controller.action_name == 'show' %>
-		<nav title="Portfolio Navigation">
+		<nav>
 			<ul id="portfolio-nav">
 				<li id="previous-link" class="inactive">previous</li>
 				<li id="next-link"><a href="#">next</a></li>
@@ -63,5 +53,15 @@
 
 </content>
 
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-10568419-2']);
+	_gaq.push(['_trackPageview']);
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
 </body>
 </html>
