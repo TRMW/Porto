@@ -1,11 +1,9 @@
 	<article class="group">
-		<%= image_tag post.image.url, :alt => post.title, :width => "348px" %>
-		<header>
+		<header class="group">
 			<h1><%= post.title %></h1>
 			<time datetime="<%= post.created_at.to_date %>" pubdate><%= link_to post.created_at.strftime('%b %d, %Y'), post %></time>
 		</header>
-		<section>
-			<%= raw post.body %>
-		</section>
+		<%= image_tag post.image.url, :alt => post.title, :width => "348px" %>
+		<%= raw post.body %>
 	</article>
 	

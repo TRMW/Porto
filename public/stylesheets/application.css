@@ -255,23 +255,21 @@ content.portfolios-create {
 	}
 	
 /* !News Posts */
-
+	
 article {
 	margin-bottom: 20px;
+	margin-left: 370px;
 	line-height: 22px;
+	position: relative;
 	}
 	
-article img {
-	float: left;
-	margin-right: 20px;
+article header {
+	line-height: 22px;
 	}
 	
 article h1 {
 	font-size: 16px;
-	line-height: 22px;
 	width: 245px;
-	margin-top: 0;
-	margin-bottom: 14px;
 	}
 	
 article time {
@@ -280,16 +278,21 @@ article time {
 	width: 90px;
 	}
 	
-article section {
-	float: left;
-	width: 350px;
+article time a {
+	text-decoration: none;
 	}
 	
-article section p {
+article img {
+	position: absolute;
+	left: -370px;
+	top: 0;
+	}
+	
+article p {
 	margin-top: 0;
 	}
 	
-article section a,
+article a,
 #tinymce a {
 	text-decoration: underline;
 	}
