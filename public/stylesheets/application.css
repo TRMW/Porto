@@ -300,7 +300,8 @@ article.post a,
 	
 /* !Bio */
 
-content.portfolios-bio p {
+content.portfolios-bio p,
+content.portfolios-contact p {
 	line-height: 22px;
 	}
 	
