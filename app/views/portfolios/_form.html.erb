@@ -23,7 +23,7 @@
 				
 				<div class="actions">
 					<% if !photo_form.object.new_record? %>
-						<a href="#" class="left" id="photo-replace-link">Replace</a>
+						<a href="#" class="photo-replace-link left">Replace</a>
 						<%= photo_form.file_field :image, :style => "display:none" %>
 						<span class="right">
 							<%= photo_form.check_box '_destroy' %>
