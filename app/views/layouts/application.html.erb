@@ -1,66 +1,78 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>DRU DONOVAN<%= content_for?(:title) ? ' - ' + yield(:title) : '' %></title>
-		<%= stylesheet_link_tag :all %>
-		<%= javascript_include_tag :defaults, 'jquery-ui' %>
-		<%= include_tiny_mce_if_needed %>
-		<%= yield :script %>
-		<%= csrf_meta_tag %>
-		<meta name="description" content="Official website and portfolio of photographer Dru Donovan." /> 
-		<meta name="keywords" content="Dru Donovan, photography">
-		
-		<!--[if lt IE9]>
-		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-	</head>
-	<body>	
-		<content class="group <%= controller.controller_name %>-<%= controller.action_name %>">
-		
-			<header class="group">
-				<h1><%= link_to 'DRU DONOVAN', root_path %></h1>
-				
-				<nav>
-					<ul id="nav">
-						<li id="news-link"><%= link_to 'news', posts_path %></li>
-						<li id="bio-link"><%= link_to 'bio', bio_path %></li>
-						<li id="contact-link"><%= link_to 'contact', contact_path %></li>
-					</ul>
-				</nav>
-				
-				<% if controller.controller_name == 'portfolios' && controller.action_name == 'show' %>
-				<nav>
-					<ul id="portfolio-nav">
-						<li id="previous-link" class="inactive">previous</li>
-						<li id="next-link"><a href="#">next</a></li>
-					</ul>
-				</nav>
-				<% end %>
-			</header>
-			
-			<% if notice %>
-				<div id="notice"><%= notice %></div>
-			<% end %>
-			
-			<section class="main">
-				<% if controller.controller_name == 'portfolios' && controller.action_name == 'show' && Settings.show_portfolios == 'true'%>
-				<%= render :partial => 'portfolios/nav' %>
-				<% end %>
-			
-				<%= yield %>
-			</section>
-		
-		</content>
-		
-		<script type="text/javascript">
-			var _gaq = _gaq || [];
-			_gaq.push(['_setAccount', 'UA-10568419-2']);
-			_gaq.push(['_trackPageview']);
-			(function() {
-				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-			})();
-		</script>
-	</body>
+  <head>
+    <title>DRU DONOVAN<%= content_for?(:title) ? ' - ' + yield(:title) : '' %></title>
+    <%= stylesheet_link_tag 'application' %>
+    <%= javascript_include_tag 'application' %>
+    <%= yield :script %>
+    <%= csrf_meta_tag %>
+    <meta name="description" content="Official website and portfolio of photographer Dru Donovan." /> 
+    <meta name="keywords" content="Dru Donovan, photography">
+    
+    <!--[if lt IE9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>  
+    <content class="group <%= controller.controller_name %>-<%= controller.action_name %>">
+    
+      <header class="group">
+        <h1><%= link_to 'DRU DONOVAN', root_path %></h1>
+        
+        <nav>
+          <ul id="nav">
+            <% if Settings.show_news == 'true' %>
+              <li id="news-link"><%= link_to Settings.news_title, page_path(Settings.news_title.parameterize) %></li>
+            <% end %>
+            <% if Settings.show_bio == 'true' %>
+              <li id="bio-link"><%= link_to Settings.bio_title, page_path(Settings.bio_title.parameterize) %></li>
+            <% end %>
+            <% if Settings.show_contact == 'true' %>
+              <li id="contact-link"><%= link_to Settings.contact_title, page_path(Settings.contact_title.parameterize) %></li>
+            <% end %>
+          </ul>
+        </nav>
+        
+        <% if (controller.controller_name == 'portfolios' && controller.action_name == 'show') || controller.controller_name == 'photos'  %>
+          <nav id="portfolio-nav">
+            <% if @previous %>
+              <%= link_to 'previous', portfolio_photo_path(@portfolio, @previous), :id => 'previous-link', :class => 'active' %>
+            <% else %>
+              <span id="previous-link" class="inactive">previous</span>
+            <% end %>
+            
+            <% if @next %>
+              <%= link_to 'next', portfolio_photo_path(@portfolio, @next), :id => 'next-link', :class => 'active' %>
+            <% else %>
+              <span id="next-link" class="inactive">next</span>
+            <% end %>
+          </nav>
+        <% end %>
+      </header>
+      
+      <% if notice %>
+        <div id="notice"><%= notice %></div>
+      <% end %>
+      
+      <section class="main">
+        <% if controller.controller_name == 'portfolios' && controller.action_name == 'show' && Settings.show_portfolios == 'true'%>
+          <%= render :partial => 'portfolios/nav' %>
+        <% end %>
+      
+        <%= yield %>
+      </section>
+    
+    </content>
+    
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-10568419-2']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </body>
 </html>

@@ -1,6 +1,8 @@
 class Portfolio < ActiveRecord::Base
-	has_many :photos, :order => "position ASC", :dependent => :destroy
-	acts_as_list
-	accepts_nested_attributes_for :photos, :allow_destroy => true
-	validates_presence_of :title, :photos
+  extend FriendlyId
+  friendly_id :title, use: [:slugged, :history]
+  validates_presence_of :title, :slug, :photos
+  has_many :photos, :order => "position ASC", :dependent => :destroy
+  accepts_nested_attributes_for :photos, :allow_destroy => true
+  acts_as_list
 end

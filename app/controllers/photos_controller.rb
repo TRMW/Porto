@@ -13,7 +13,11 @@ class PhotosController < ApplicationController
   # GET /photos/1
   # GET /photos/1.xml
   def show
-    @photo = Photo.find(params[:id])
+  	@portfolio = Portfolio.find(params[:portfolio_id])
+    @photo = @portfolio.photos.find(params[:id])
+    position = params[:id].to_i
+    @next = position < @portfolio.photos.length ? position + 1 : nil
+    @previous = position > 1 ? position - 1 : nil
 
     respond_to do |format|
       format.html # show.html.erb

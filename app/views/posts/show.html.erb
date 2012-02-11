@@ -1,1 +1,3 @@
-<%= render :partial => 'post', :object => @post %>
+<% content_for :title, Settings.news_title + ' - ' + @post.title %>
+
+<%= render :partial => 'posts/post', :object => @post %>

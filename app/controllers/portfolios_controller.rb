@@ -1,6 +1,4 @@
 class PortfoliosController < ApplicationController
-	uses_tiny_mce :only => :index
-	
   # GET /portfolios
   # GET /portfolios.xml
   def index
@@ -15,11 +13,18 @@ class PortfoliosController < ApplicationController
   # GET /portfolios/1
   # GET /portfolios/1.xml
   def show
-    @portfolio = Portfolio.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @portfolio }
+    @portfolio = Portfolio.find(params[:id] || Settings.front_portfolio)
+    @next = @portfolio.photos.length > 1 ? 2 : nil
+    @previous = nil
+    
+    # redirect historical slugs to current slugs
+    if request.path != '/' && request.path != portfolio_path(@portfolio)
+      redirect_to @portfolio, status: :moved_permanently
+    else
+      respond_to do |format|
+        format.html # show.html.erb
+        format.xml  { render :xml => @portfolio }
+      end
     end
   end
 
@@ -28,7 +33,7 @@ class PortfoliosController < ApplicationController
   def new
     @portfolio = Portfolio.new
     6.times do
-    	@portfolio.photos.build
+      @portfolio.photos.build
     end
 
     respond_to do |format|
@@ -42,7 +47,7 @@ class PortfoliosController < ApplicationController
     @portfolio = Portfolio.find(params[:id])
     new = 3 - (@portfolio.photos.length % 3)
     new.times do
-    	@portfolio.photos.build
+      @portfolio.photos.build
     end
   end
 
@@ -57,8 +62,8 @@ class PortfoliosController < ApplicationController
         format.xml  { render :xml => @portfolio, :status => :created, :location => @portfolio }
       else
         6.times do
-		    	@portfolio.photos.build
-		    end
+          @portfolio.photos.build
+        end
         format.html { render :action => "new" }
         format.xml  { render :xml => @portfolio.errors, :status => :unprocessable_entity }
       end
@@ -94,27 +99,33 @@ class PortfoliosController < ApplicationController
   end
   
   def add_new_photos
-  	@start = params[:last_photo].to_i
-  	@new_photos = params[:new_photos].to_i
+    @start = params[:last_photo].to_i
+    @new_photos = params[:new_photos].to_i
     
     respond_to do |format|
-  		format.js
+      format.js
     end
   end
   
   def set_position
-  	params[:portfolios].each do |key, value|
-  		logger.info "key = #{key} and value = #{value}"
-  		Portfolio.find(key).update_attribute('position', value)
-  	end
+    params[:portfolios].each do |key, value|
+      logger.info "key = #{key} and value = #{value}"
+      Portfolio.find(key).update_attribute('position', value)
+    end
   end
   
   def settings
-  	Settings.show_portfolios = params[:show_portfolios] || 'false'
-  	Settings.front_portfolio = params[:front_portfolio]
-  	Settings.phone = params[:phone]
-  	Settings.email = params[:email]
-  	Settings.bio = params[:bio]
-  	redirect_to(admin_url, :notice => 'Settings updated.')
+    Settings.front_portfolio = params[:front_portfolio]
+    Settings.show_portfolios = params[:show_portfolios] || 'false'
+    Settings.news_title = params[:news_title]
+    Settings.bio_title = params[:bio_title]
+    Settings.contact_title = params[:contact_title]
+    Settings.show_news = params[:show_news] || 'false'
+    Settings.show_bio = params[:show_bio] || 'false'
+    Settings.show_contact = params[:show_contact] || 'false'
+    Settings.phone = params[:phone]
+    Settings.email = params[:email]
+    Settings.bio = params[:bio]
+    redirect_to(admin_url, :notice => 'Settings updated.')
   end
 end
