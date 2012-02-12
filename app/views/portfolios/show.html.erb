@@ -1,7 +1,3 @@
-<% content_for :script do %>
-  <%= javascript_path 'portfolio' %>
-<% end %>
-
 <% if request.url != root_url %>
   <% content_for :title, @portfolio.title.downcase %>
 <% end %>
