@@ -5,14 +5,16 @@ gem 'rails', '3.2.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-# gem 'sqlite3'
-gem 'pg'
+# add postgre adaptor for heroku
+group :production do
+  gem 'pg'
+end
+
 gem 'aws-sdk'
 gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
 gem 'acts_as_list'
 gem 'rails-settings', :require => 'settings'
 gem 'tinymce-rails'
-gem 'hoptoad_notifier'
 gem 'jquery-rails'
 gem 'friendly_id', :git => 'git://github.com/norman/friendly_id.git'
 
@@ -22,6 +24,10 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
+end
+
+group :development, :test do
+  gem 'sqlite3'
 end
 
 # To use ActiveModel has_secure_password
