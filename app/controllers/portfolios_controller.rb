@@ -13,18 +13,22 @@ class PortfoliosController < ApplicationController
   # GET /portfolios/1
   # GET /portfolios/1.xml
   def show
-    @portfolio = Portfolio.find(params[:id] || Settings.front_portfolio)
-    @next = @portfolio.photos.length > 1 ? 2 : nil
-    @previous = nil
-    
-    # redirect historical slugs to current slugs
-    if request.path != '/' && request.path != portfolio_path(@portfolio)
-      redirect_to @portfolio, :status => :moved_permanently
-    else
-      respond_to do |format|
-        format.html # show.html.erb
-        format.xml  { render :xml => @portfolio }
+    if Portfolio.first
+      @portfolio = Portfolio.find(params[:id] || Settings.front_portfolio)
+      @next = @portfolio.photos.length > 1 ? 2 : nil
+      @previous = nil
+      
+      # redirect historical slugs to current slugs
+      if request.path != '/' && request.path != portfolio_path(@portfolio)
+        redirect_to @portfolio, :status => :moved_permanently
+      else
+        respond_to do |format|
+          format.html # show.html.erb
+          format.xml  { render :xml => @portfolio }
+        end
       end
+    else
+      redirect_to admin_path
     end
   end
 
