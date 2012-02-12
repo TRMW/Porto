@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :title, :use => [:slugged, :history]
+  friendly_id :title, use: [:slugged, :history]
   validates_presence_of :title, :body
   validates_attachment_presence :image
   has_attached_file :image,
