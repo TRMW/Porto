@@ -10,7 +10,7 @@ class PagesController < ApplicationController
       if params[:id]
         @post = Post.find(params[:id])
         if request.path != page_path(Settings.news_title, @post)
-          redirect_to page_path(Settings.news_title, @post), status: :moved_permanently
+          redirect_to page_path(Settings.news_title, @post), :status => :moved_permanently
         else
           render 'posts/show'
         end

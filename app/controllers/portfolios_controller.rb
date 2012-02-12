@@ -19,7 +19,7 @@ class PortfoliosController < ApplicationController
     
     # redirect historical slugs to current slugs
     if request.path != '/' && request.path != portfolio_path(@portfolio)
-      redirect_to @portfolio, status: :moved_permanently
+      redirect_to @portfolio, :status => :moved_permanently
     else
       respond_to do |format|
         format.html # show.html.erb
