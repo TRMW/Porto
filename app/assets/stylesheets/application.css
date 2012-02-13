@@ -142,20 +142,8 @@ header h1 {
 
 /* !View Portfolio */
 
-.portfolio-photo,
-.portfolio-photo-last {
-  /* display: none; */
-  position: absolute;
-  top: 0;
-  left: 0;
-  }
-  
-content.portfolios-show img {
+.portfolio-photo {
   cursor: pointer;
-  }
-  
-#photo_0 {
-  display: inline;
   }
 
 /* !Edit */

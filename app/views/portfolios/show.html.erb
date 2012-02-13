@@ -4,6 +4,8 @@
 
 <article title="<%= @portfolio.title %>">
   <% @portfolio.photos.each_with_index do |photo, i| %>
-    <%= image_tag photo.image.url, :class => 'portfolio-photo' + (i + 1 == @portfolio.photos.length ? ' portfolio-photo-last' : ''), :id => "photo_#{i}", :style => (i == 0 ? '' : 'display: none;') %>
+    <%= link_to_if i == 0, portfolio_image_tag(photo, i), portfolio_photo_path(@portfolio, @next) do %>
+      <%= image_tag photo.image.url, :class => 'portfolio-photo' + (i + 1 == @portfolio.photos.length ? ' portfolio-photo-last' : ''), :id => "photo_#{i}", :style => (i == 0 ? '' : 'display: none;') %>
+    <% end %>
   <% end %>
 </article>
