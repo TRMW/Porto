@@ -1,0 +1,58 @@
+<h1>Setup</h1>
+
+<p>OK, now we need to get the basic settings. Don't worry, you can always edit these later.</p>
+
+<div class="settings">
+  <%= form_tag('/settings') do %>
+    <div class="field">
+      <%= label_tag 'portfolio_name', 'Portfolio Name' %>
+      <%= text_field_tag 'portfolio_name', Settings.portfolio_name, :placeholder => 'John Doe\'s Portfolio' %>
+      <span>This is the name of your portfolio, as displayed on this site. You'll probably want this to be your name, or something cool like that.</span>
+    </div>
+    <div class="field check-field first">
+      <%= check_box_tag 'show_portfolios', 'true', (Settings.show_portfolios == 'true') %>
+      <%= label_tag 'show_portfolios', 'Show portfolio sidebar?' %>
+      <span>You have the option of showing a list of all your projects on the site.</span>
+    </div>
+    <div class="field first">
+      <%= label_tag 'news_title', 'News Section Title' %>
+      <%= text_field_tag 'news_title', Settings.news_title, :placeholder => 'News' %>
+    </div>
+    <div class="field">
+      <%= label_tag 'bio_title', 'Bio Section Title' %>
+      <%= text_field_tag 'bio_title', Settings.bio_title, :placeholder => 'Bio' %>
+    </div>
+    <div class="field">
+      <%= label_tag 'contact_title', 'Contact Section Title' %>
+      <%= text_field_tag 'contact_title', Settings.contact_title, :placeholder => 'Contact' %>
+    </div>
+    <div class="field first check-field">
+      <%= check_box_tag 'show_news', 'true', (Settings.show_news == 'true') %>
+      <%= label_tag 'show_news', 'Show News section?' %>
+    </div>
+    <div class="field check-field">
+      <%= check_box_tag 'show_bio', 'true', (Settings.show_bio == 'true') %>
+      <%= label_tag 'show_bio', 'Show Bio section?' %>
+    </div>
+    <div class="field check-field">
+      <%= check_box_tag 'show_contact', 'true', (Settings.show_contact == 'true') %>
+      <%= label_tag 'show_contact', 'Show Contact section?' %>
+    </div>
+    <div class="field first">
+      <%= label_tag 'email' %>
+      <%= text_field_tag 'email', Settings.email %>
+    </div>
+    <div class="field">
+      <%= label_tag 'phone' %>
+      <%= text_field_tag 'phone', Settings.phone %>
+    </div>
+    <div id="bio-field" class="field">
+      <%= label_tag 'bio' %>
+      <%= text_area_tag 'bio', Settings.bio %>
+    </div>
+    <%= hidden_field_tag 'initial_setup', 'true' %>
+    <div class="field">
+      <%= submit_tag "Update Settings" %>
+    </div>
+  <% end %>
+</div>
