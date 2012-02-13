@@ -1,8 +1,4 @@
-<% content_for :script do %>
-  <%= javascript_include_tag 'portfolio' %>
-<% end %>
-
-<%= form_for([:admin, @portfolio], :html => { :multipart => true }) do |f| %>
+<%= form_for(@portfolio, :html => { :multipart => true }) do |f| %>
   <%= render :partial => 'common/errors', :locals => { :object => @portfolio } if @portfolio.errors.any? %>
 
   <div class="field group">

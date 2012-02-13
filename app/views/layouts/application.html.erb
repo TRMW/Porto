@@ -13,11 +13,11 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
-  <body>  
-    <content class="group <%= controller.controller_name %>-<%= controller.action_name %>">
+  <body class="<%= controller.controller_name %>-<%= controller.action_name %>-body">
+    <content class="group">
     
       <header class="group">
-        <h1><%= link_to 'DRU DONOVAN', root_path %></h1>
+        <h1><%= link_to (Settings.portfolio_name || 'Porto'), root_path %></h1>
         
         <nav>
           <ul id="nav">
@@ -29,6 +29,9 @@
             <% end %>
             <% if Settings.show_contact == 'true' %>
               <li id="contact-link"><%= link_to Settings.contact_title, page_path(Settings.contact_title.parameterize) %></li>
+            <% end %>
+            <% if current_user %>
+              <li><%= link_to 'log out', session_path, :confirm => 'Are you sure you want to log out?', :method => :delete %></li>
             <% end %>
           </ul>
         </nav>
@@ -55,7 +58,7 @@
       <% end %>
       
       <section class="main">
-        <% if controller.controller_name == 'portfolios' && controller.action_name == 'show' && Settings.show_portfolios == 'true'%>
+        <% if @portfolios && controller.controller_name == 'portfolios' && controller.action_name == 'show' && Settings.show_portfolios == 'true' %>
           <%= render :partial => 'portfolios/nav' %>
         <% end %>
       

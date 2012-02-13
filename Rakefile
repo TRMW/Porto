@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-Dru::Application.load_tasks
+Porto::Application.load_tasks

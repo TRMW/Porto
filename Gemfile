@@ -17,6 +17,7 @@ gem 'rails-settings', :require => 'settings'
 gem 'tinymce-rails'
 gem 'jquery-rails'
 gem 'friendly_id', :git => 'git://github.com/norman/friendly_id.git'
+gem 'bcrypt-ruby'
 
 # Gems used only for assets and not required
 # in production environments by default.

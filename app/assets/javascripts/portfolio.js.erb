@@ -10,62 +10,65 @@ $(document).ready(function(){
     }
   });
   
-  var i = 0,
-    photos = $('.portfolio-photo'),
-    nextLink = $('#next-link'),
-    prevLink = $('#previous-link');
-  
-  nextLink.add(photos).click( function() {
-    // if we're not on the last photo
-    if ( i + 1 != photos.length ) {
-    
-      $(photos[i + 1]).show();
-      $(photos[i]).hide();
-      prevLink.removeClass( 'inactive' ).addClass( 'active' );
-      i++;
-    
-      // hide next button if we've just shown the last photo
-      if ( i + 1 == photos.length ) {
-        nextLink.addClass( 'inactive' ).removeClass( 'active' );
-      }
-      
-    }
-    
-    return false;
-  });
-  
-  prevLink.click( function() {
-  
-    // if we're not on the first photo
-    if ( i - 1 >= 0 ) {
-    
-      $(photos[i - 1]).show();
-      $(photos[i]).hide();
-      nextLink.removeClass( 'inactive' ).addClass( 'active' );
-      i--;
-    
-      // hide next button if we've just shown the first photo
-      if ( i == 0 ) {
-        prevLink.addClass( 'inactive' ).removeClass( 'active' );
-      }
-      
-    }
-    
-    return false;
-  });
-  
-  $('.portfolio-photo-last').click(function(){
-    $('#photo_0').show();
-    $(this).hide();
-    nextLink.removeClass( 'inactive' ).addClass( 'active' );
-    prevLink.addClass( 'inactive' ).removeClass( 'active' );
-    i = 0;
-  });
-  
   $('.photo-replace-link').click(function(){
     $(this).next('input:file').show();
     $(this).siblings('.remove-check').hide();
     $(this).hide();
     return false;
   });
+  
+  if ( $('.portfolios-show-body').length ) {
+    
+    var i = 0,
+      photos = $('.portfolio-photo'),
+      nextLink = $('#next-link'),
+      prevLink = $('#previous-link');
+    
+    nextLink.add(photos).click( function() {
+      // if we're not on the last photo
+      if ( i + 1 != photos.length ) {
+      
+        $(photos[i + 1]).show();
+        $(photos[i]).hide();
+        prevLink.removeClass( 'inactive' ).addClass( 'active' );
+        i++;
+      
+        // hide next button if we've just shown the last photo
+        if ( i + 1 == photos.length ) {
+          nextLink.addClass( 'inactive' ).removeClass( 'active' );
+        }
+        
+      }
+      
+      return false;
+    });
+    
+    prevLink.click( function() {
+    
+      // if we're not on the first photo
+      if ( i - 1 >= 0 ) {
+      
+        $(photos[i - 1]).show();
+        $(photos[i]).hide();
+        nextLink.removeClass( 'inactive' ).addClass( 'active' );
+        i--;
+      
+        // hide next button if we've just shown the first photo
+        if ( i == 0 ) {
+          prevLink.addClass( 'inactive' ).removeClass( 'active' );
+        }
+        
+      }
+      
+      return false;
+    });
+    
+    $('.portfolio-photo-last').click(function(){
+      $('#photo_0').show();
+      $(this).hide();
+      nextLink.removeClass( 'inactive' ).addClass( 'active' );
+      prevLink.addClass( 'inactive' ).removeClass( 'active' );
+      i = 0;
+    });
+  }
 });

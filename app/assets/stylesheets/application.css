@@ -148,10 +148,10 @@ header h1 {
 
 /* !Edit */
 
-content.portfolios-new,
-content.portfolios-edit,
-content.portfolios-index,
-content.portfolios-create {
+.portfolios-new-body content,
+.portfolios-edit-body content,
+.portfolios-index-body content,
+.portfolios-create-body content {
   width: 730px; /* extra room to the right so we don't have to add a .last class to every third photo */
   -moz-user-select: none;
   -webkit-user-select: none;
