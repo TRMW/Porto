@@ -9,7 +9,7 @@ class Portfolio < ActiveRecord::Base
   
   def set_front_portfolio
     # if this is the first portfolio, set it as the front portofolio
-    if Portfolio.length == 1
+    if Portfolio.count == 1
       Settings.front_portfolio = self.id
     end
   end

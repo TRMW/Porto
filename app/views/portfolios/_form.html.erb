@@ -1,53 +1,56 @@
-<%= form_for(@portfolio, :html => { :multipart => true }) do |f| %>
+<%= form_for [:admin, @portfolio], :html => { :multipart => true } do |f| %>
   <%= render :partial => 'common/errors', :locals => { :object => @portfolio } if @portfolio.errors.any? %>
 
   <div class="field group">
     <%= f.text_field :title, :placeholder => "Portfolio Title" %>
   </div>
   
+  <div class="field check-field group">
+    <%= f.check_box :visible %>
+    <%= f.label :visible, 'Make this portfolio visible?' %>
+  </div>
+  
   <div class="blocks group">
     <%= f.fields_for :photos do |photo_form| %>
     
-      <div class="field block <%= " sortable" if !photo_form.object.new_record? %>">
-        <div class="title"><%= photo_form.object.position %></div>
-        
-        <% if !photo_form.object.new_record? %>
-          <div class="image-wrapper" style="background: url(<%= photo_form.object.image.url(:thumb) %>) no-repeat;"></div>
-        <% else %>
-          <div class="image-placeholder"><span>add photo</span></div>
-        <% end %>
-        
-        <div class="actions">
-          <% if !photo_form.object.new_record? %>
-            <a href="#" class="photo-replace-link left">Replace</a>
-            <%= photo_form.file_field :image, :style => "display:none" %>
-            <span class="right">
-              <%= photo_form.check_box '_destroy' %>
-              <%= photo_form.label '_destroy', 'Remove' %>
-            </span>
-            <%= photo_form.hidden_field :position %>
-          
-          <% else %>
-            <%= photo_form.file_field :image %>
-          <% end %>
-        </div>
-      </div>
-        
-      <% end %>
-    </div>
-    
-    <div class="options group">
-      <div class="left">
-        <%= link_to 'Add six more photos', add_new_photos_path(:last_photo => @portfolio.photos.length, :new_photos => 6), :remote => true %>
-      </div>
+    <div class="field block <%= " sortable" if !photo_form.object.new_record? %>">
+      <div class="title"><%= photo_form.object.position %></div>
       
-      <div class="right">
-        <%= f.check_box :visible %>
-        <%= f.label :visible, 'Show in portfolio listing sidebar?' %>
+      <% if !photo_form.object.new_record? %>
+        <div class="image-wrapper" style="background: url(<%= photo_form.object.image.url(:thumb) %>) no-repeat;"></div>
+      <% else %>
+        <div class="image-placeholder"><span>add photo</span></div>
+      <% end %>
+      
+      <div class="actions">
+        <% if !photo_form.object.new_record? %>
+          <a href="#" class="photo-replace-link left">Replace</a>
+          <%= photo_form.file_field :image, :style => "display:none" %>
+          <span class="right">
+            <%= photo_form.check_box '_destroy' %>
+            <%= photo_form.label '_destroy', 'Remove' %>
+          </span>
+          <%= photo_form.hidden_field :position %>
+        
+        <% else %>
+          <%= photo_form.file_field :image %>
+        <% end %>
       </div>
     </div>
+      
+    <% end %>
+  </div>
+  
+  <div class="field group">
+    <%= link_to 'Add six more photos', add_new_photos_path(:last_photo => @portfolio.photos.length, :new_photos => 6), :class => 'add-more-link', :remote => true %>
+  </div>
+    
+  <h3>Description <span>optional</span></h3>
+  <div class="field group">
+    <%= f.text_area :description, :placeholder => "Optional description text." %>
+  </div>
         
   <div class="actions">
-  <%= f.submit %>
+    <%= f.submit %>
   </div>
 <% end %>

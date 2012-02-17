@@ -13,29 +13,12 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
-  <body class="<%= controller.controller_name %>-<%= controller.action_name %>-body">
+  <body class="<%= controller.controller_name %>-body <%= controller.controller_name %>-<%= controller.action_name %>-body">
     <content class="group">
     
       <header class="group">
-        <h1><%= link_to (Settings.portfolio_name || 'Porto'), root_path %></h1>
-        
-        <nav>
-          <ul id="nav">
-            <% if Settings.show_news == 'true' %>
-              <li id="news-link"><%= link_to Settings.news_title, page_path(Settings.news_title.parameterize) %></li>
-            <% end %>
-            <% if Settings.show_bio == 'true' %>
-              <li id="bio-link"><%= link_to Settings.bio_title, page_path(Settings.bio_title.parameterize) %></li>
-            <% end %>
-            <% if Settings.show_contact == 'true' %>
-              <li id="contact-link"><%= link_to Settings.contact_title, page_path(Settings.contact_title.parameterize) %></li>
-            <% end %>
-            <% if current_user %>
-              <li><%= link_to 'log out', session_path, :confirm => 'Are you sure you want to log out?', :method => :delete %></li>
-            <% end %>
-          </ul>
-        </nav>
-        
+        <h1><%= link_to (Settings.site_name || 'Porto'), root_path %></h1>
+
         <% if (controller.controller_name == 'portfolios' && controller.action_name == 'show') || controller.controller_name == 'photos'  %>
           <nav id="portfolio-nav">
             <% if @previous %>
@@ -58,7 +41,7 @@
       <% end %>
       
       <section class="main">
-        <% if @portfolios && controller.controller_name == 'portfolios' && controller.action_name == 'show' && Settings.show_portfolios == 'true' %>
+        <% if @portfolios && controller.controller_name == 'portfolios' && controller.action_name == 'show' && Portfolio.count > 1 %>
           <%= render :partial => 'portfolios/nav' %>
         <% end %>
       

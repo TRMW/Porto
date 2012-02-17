@@ -1,3 +1,7 @@
-<% content_for :title do "New Portofolio" end %>
+<% content_for :title do "New Project" end %>
+
+<% if Portfolio.count == 0 %>
+  <p>Great! Now let's set up your first project.</p>
+<% end %>
 
 <%= render 'form' %>

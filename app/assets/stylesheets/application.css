@@ -37,12 +37,26 @@ h1 a:visited {
   color: black;
   }
   
+h2 {
+  color: #666;
+  }
+  
+h3 {
+  font-size: 16px;
+  margin-top: 30px;
+  }
+  
+h3 span {
+  font-weight: normal;
+  color: #A9A9A9;
+  }
+  
 label {
   font-weight: bold;
   }
   
 textarea {
-  width: 697px;
+  width: 713px;
   height: 300px;
   }
   
@@ -72,6 +86,7 @@ header h1 {
   
 /* !Nav */
   
+/*
 #nav {
   bottom: 0;
   left: 160px;
@@ -83,27 +98,42 @@ header h1 {
   margin-right: 8px;
   float: left;
   }
+*/
   
 /* !Portfolio Sidebar */
 
 #portfolios {
   left: 0;
-  margin-left: -170px;
-  position: absolute;
   top: 0;
-  width: 150px;
+  width: 200px;
+  margin-left: -220px;
+  position: absolute;
+  }
+  
+#portfolios.fixed {
+  position: fixed;
+  top: 15px; /* left position is asigned via JS */
+  margin-left: 0;
   }
   
 #portfolios li {
-  display: block;
-  text-align: right;
+  float: right;
+  clear: both;
   margin-bottom: 8px;
-  width: 150px;
   font-weight: bold;
+  }
+  
+.nav-portfolio-last {
+  border-bottom: solid 1px #E8E8E8;
+  padding-bottom: 8px;
   }
   
 #portfolios li a {
   font-weight: normal;
+  }
+  
+#news-link {
+  color: #DDD;
   }
   
 /* !Portfolio Navigation */
@@ -148,10 +178,10 @@ header h1 {
 
 /* !Edit */
 
+.admin-body content,
 .portfolios-new-body content,
-.portfolios-edit-body content,
-.portfolios-index-body content,
-.portfolios-create-body content {
+.portfolios-create-body content,
+.portfolios-edit-body content {
   width: 730px; /* extra room to the right so we don't have to add a .last class to every third photo */
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -211,15 +241,7 @@ header h1 {
   background-color: black;
   }
   
-.options {
-  font-weight: bold;
-  margin-bottom: 10px;
-  clear: left;
-  float: left;
-  width: 720px;
-  }
-  
-.options a {
+.add-more-link {
   text-decoration: underline;
   }
 
@@ -291,10 +313,9 @@ article.post a,
   text-decoration: underline;
   }
   
-/* !Bio */
+/* !Pages (bio, contact, news) */
 
-content.portfolios-bio p,
-content.portfolios-contact p {
+.pages-show-body content p {
   line-height: 22px;
   }
   
@@ -304,6 +325,11 @@ content.portfolios-contact p {
   float: left;
   margin-right: 10px;
   margin-bottom: 20px;  
+  width: 233px;
+  }
+  
+.settings .field.text-field {
+  width: 100%;
   }
   
 #bio-field {
@@ -313,6 +339,13 @@ content.portfolios-contact p {
 .settings label {
   display: block;
   margin-bottom: 5px;
+  }
+  
+.settings .field > span {
+  color: #666;
+  font-size: 12px;
+  padding-top: 8px;
+  display: block;
   }
   
 .settings .check-field {
@@ -326,6 +359,7 @@ content.portfolios-contact p {
   }
   
 .settings input[type="text"],
+.settings input[type="password"],
 .settings select {
   font-family: Helvetica, Arial, sans-serif;
   font-size:   14px;
@@ -338,7 +372,7 @@ content.portfolios-contact p {
   box-sizing: border-box;
   }
 
-.settings input[type="submit"] {
+.settings .actions {
   clear: left;
   }
   

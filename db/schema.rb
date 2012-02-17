@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120213035050) do
+ActiveRecord::Schema.define(:version => 20120216151449) do
 
   create_table "friendly_id_slugs", :force => true do |t|
     t.string   "slug",                         :null => false
@@ -34,11 +34,12 @@ ActiveRecord::Schema.define(:version => 20120213035050) do
 
   create_table "portfolios", :force => true do |t|
     t.string   "title"
-    t.boolean  "visible",    :default => false
+    t.boolean  "visible",     :default => true
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
+    t.text     "description"
   end
 
   add_index "portfolios", ["slug"], :name => "index_portfolios_on_slug", :unique => true

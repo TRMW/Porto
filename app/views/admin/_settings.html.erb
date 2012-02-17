@@ -3,12 +3,12 @@
 <div class="settings">
   <%= form_tag('/settings') do %>
     <div class="field">
+      <%= label_tag 'site_name', 'Site Name' %>
+      <%= text_field_tag 'site_name', Settings.site_name, :placeholder => 'John Doe\'s Portfolio' %>
+    </div>
+    <div class="field">
       <%= label_tag 'front_portfolio', 'Front Portfolio' %>
       <%= select_tag 'front_portfolio', options_from_collection_for_select(@portfolios, 'id', 'title', Settings.front_portfolio) %>
-    </div>
-    <div class="field check-field first">
-      <%= check_box_tag 'show_portfolios', 'true', (Settings.show_portfolios == 'true') %>
-      <%= label_tag 'show_portfolios', 'Show portfolio sidebar?' %>
     </div>
     <div class="field first">
       <%= label_tag 'news_title', 'News Section Title' %>
@@ -42,7 +42,7 @@
       <%= label_tag 'phone' %>
       <%= text_field_tag 'phone', Settings.phone %>
     </div>
-    <div id="bio-field" class="field">
+    <div id="bio-field" class="field text-field">
       <%= label_tag 'bio' %>
       <%= text_area_tag 'bio', Settings.bio %>
     </div>

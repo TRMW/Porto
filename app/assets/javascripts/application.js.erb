@@ -17,4 +17,24 @@ $(document).ready(function(){
     valid_elements: 'a[href|target=_blank],strong/b,em/i,p,br',
     plugins: 'inlinepopups'
   });
+
+  var original = $('#portfolios').offset();
+  
+  if ( $('#portfolios').length ) {
+    $(document).scroll(function(){
+      var scroll = $(window).scrollTop(),
+        nav = $('#portfolios'),
+        top = nav.offset().top;
+      
+      if ( scroll > original.top - 15 ) {
+        nav.addClass('fixed');
+        nav.css('left', original.left);
+      }
+      
+      else if ( scroll = original.top ) {
+        nav.removeClass('fixed');
+        nav.css('left', 0);
+      }
+    });
+  }
 });

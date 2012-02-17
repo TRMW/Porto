@@ -2,7 +2,7 @@ class CreatePortfolios < ActiveRecord::Migration
   def self.up
     create_table :portfolios do |t|
       t.string :title
-      t.boolean :visible, :default => false
+      t.boolean :visible, :default => true
       t.integer :position
 
       t.timestamps

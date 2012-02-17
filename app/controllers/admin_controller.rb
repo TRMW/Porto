@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-  before_filter :require_login, :except => 'login'
+  before_filter :require_login, :except => [ 'password', 'login' ]
   
   def index
     @portfolios = Portfolio.all(:order => 'position')
@@ -27,7 +27,7 @@ class AdminController < ApplicationController
   end
   
   def settings
-    Settings.portfolio_name = params[:portfolio_name]
+    Settings.site_name = params[:site_name]
     Settings.front_portfolio = params[:front_portfolio]
     Settings.show_portfolios = params[:show_portfolios] || 'false'
     Settings.news_title = params[:news_title]

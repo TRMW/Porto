@@ -2,10 +2,12 @@
   <% content_for :title, @portfolio.title.downcase %>
 <% end %>
 
-<article title="<%= @portfolio.title %>">
+<article title="<%= @portfolio.title %>" data-portfolio-slug="<%= @portfolio.slug %>">
   <% @portfolio.photos.each_with_index do |photo, i| %>
-    <%= link_to_if i == 0, portfolio_image_tag(photo, i), portfolio_photo_path(@portfolio, @next) do %>
-      <%= image_tag photo.image.url, :class => 'portfolio-photo' + (i + 1 == @portfolio.photos.length ? ' portfolio-photo-last' : ''), :id => "photo_#{i}", :style => (i == 0 ? '' : 'display: none;') %>
-    <% end %>
+    <%= link_to_if i == 0, portfolio_image_tag(photo, i), portfolio_photo_path(@portfolio, @next) %>
   <% end %>
 </article>
+
+<h3><%= @portfolio.title %></h3>
+
+<div><%= raw @portfolio.description %></div>

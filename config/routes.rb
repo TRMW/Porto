@@ -1,6 +1,6 @@
 Porto::Application.routes.draw do
 	
-	resources :portfolios, :only => :show do
+	resources :portfolios, :only => [ :index, :show ] do
 		resources :photos
 	end
 	
@@ -16,7 +16,7 @@ Porto::Application.routes.draw do
   match 'admin/add_new_photos' => 'admin#add_new_photos', :as => :add_new_photos
 	match 'admin/set_position' => 'admin#set_position', :as => :set_position
 	match 'settings' => 'admin#settings'
-	scope 'admin' do
+	scope 'admin', :as => 'admin' do
   	resources :portfolios, :except => [ :show, :index ]
   	resources :posts
 	end
