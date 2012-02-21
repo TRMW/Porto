@@ -5,6 +5,7 @@
 //= require_self
 //= require_tree .
 
+// Use TinyMCE editor for textareas
 $(document).ready(function(){
   $('textarea').tinymce({
     content_css: '<%= stylesheet_path("application.css") %>',
@@ -16,27 +17,5 @@ $(document).ready(function(){
     theme_advanced_toolbar_align: 'left',
     valid_elements: 'a[href|target=_blank],strong/b,em/i,p,br',
     plugins: 'inlinepopups'
-  });
-
-/*
-  var original = $('#projects').offset();
-  
-  if ( $('#projects').length ) {
-    $(document).scroll(function(){
-      var scroll = $(window).scrollTop(),
-        nav = $('#projects'),
-        top = nav.offset().top;
-      
-      if ( scroll > original.top - 15 ) {
-        nav.addClass('fixed');
-        nav.css('left', original.left);
-      }
-      
-      else if ( scroll = original.top ) {
-        nav.removeClass('fixed');
-        nav.css('left', 0);
-      }
-    });
-  }
-*/
+  });  
 });
