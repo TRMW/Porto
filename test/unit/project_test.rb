@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PortfolioTest < ActiveSupport::TestCase
+class ProjectTest < ActiveSupport::TestCase
   # Replace this with your real tests.
   test "the truth" do
     assert true

@@ -1,8 +1,0 @@
-<% @portfolios.each do |portfolio| %>
-  <div class="field block">
-    <div class="title"><%= link_to portfolio.title, portfolio %></div>
-    <div class="image-wrapper">
-      <%= link_to image_tag(portfolio.photos.first.image.url(:thumb)), portfolio %>
-    </div>
-  </div>
-<% end %>

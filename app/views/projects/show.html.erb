@@ -1,0 +1,10 @@
+<% if request.url != root_url %>
+  <% content_for :title, @project.title %>
+<% end %>
+
+<article class="project" data-project-slug="<%= @project.slug %>" data-current-index="<%= @image.position - 1 %>">
+  <% @project.images.each_with_index do |image, i| %>
+    <% # link the current image to next image if there is one, otherwise link to first image in project %>
+    <%= link_to_if image.position == @image.position, project_image_tag(image, i), (@next ? project_image_path(@project, image.position + 1) : project_path(@project)) %>
+  <% end %>
+</article>

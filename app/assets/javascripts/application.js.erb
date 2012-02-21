@@ -18,12 +18,13 @@ $(document).ready(function(){
     plugins: 'inlinepopups'
   });
 
-  var original = $('#portfolios').offset();
+/*
+  var original = $('#projects').offset();
   
-  if ( $('#portfolios').length ) {
+  if ( $('#projects').length ) {
     $(document).scroll(function(){
       var scroll = $(window).scrollTop(),
-        nav = $('#portfolios'),
+        nav = $('#projects'),
         top = nav.offset().top;
       
       if ( scroll > original.top - 15 ) {
@@ -37,4 +38,5 @@ $(document).ready(function(){
       }
     });
   }
+*/
 });

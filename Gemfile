@@ -2,17 +2,17 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.2.1'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 # add postgre adaptor for heroku
 group :production do
   gem 'pg'
 end
 
+group :development, :test do
+  gem 'sqlite3'
+end
+
 gem 'aws-sdk'
 gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
-gem 'acts_as_list'
 gem 'rails-settings', :require => 'settings'
 gem 'tinymce-rails'
 gem 'jquery-rails'
@@ -27,9 +27,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :development, :test do
-  gem 'sqlite3'
-end
+# Bundle edge Rails instead:
+# gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

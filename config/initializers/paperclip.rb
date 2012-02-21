@@ -1,3 +1,3 @@
-Paperclip.interpolates :portfolio_id do |attachment, style|
-  attachment.instance.portfolio.id
+Paperclip.interpolates :project_id do |attachment, style|
+  attachment.instance.project.id
 end

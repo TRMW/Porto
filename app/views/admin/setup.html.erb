@@ -10,12 +10,12 @@
       <span>This will be the name of your site, as displayed in the header and title bar.</span>
     </div>
     <div class="field first">
-      <%= label_tag 'news_title', 'News Section Title' %>
-      <%= text_field_tag 'news_title', Settings.news_title, :placeholder => 'News' %>
+      <%= label_tag 'blog_title', 'Blog Section Title' %>
+      <%= text_field_tag 'blog_title', Settings.blog_title, :placeholder => 'Blog' %>
     </div>
     <div class="field">
-      <%= label_tag 'bio_title', 'Bio Section Title' %>
-      <%= text_field_tag 'bio_title', Settings.bio_title, :placeholder => 'Bio' %>
+      <%= label_tag 'about_title', 'About Section Title' %>
+      <%= text_field_tag 'about_title', Settings.about_title, :placeholder => 'About' %>
     </div>
     <div class="field">
       <%= label_tag 'contact_title', 'Contact Section Title' %>
@@ -26,8 +26,8 @@
       <%= label_tag 'show_news', 'Show News section?' %>
     </div>
     <div class="field check-field">
-      <%= check_box_tag 'show_bio', 'true', (Settings.show_bio == 'true') %>
-      <%= label_tag 'show_bio', 'Show Bio section?' %>
+      <%= check_box_tag 'show_about', 'true', (Settings.show_about == 'true') %>
+      <%= label_tag 'show_about', 'Show Bio section?' %>
     </div>
     <div class="field check-field">
       <%= check_box_tag 'show_contact', 'true', (Settings.show_contact == 'true') %>
@@ -44,8 +44,8 @@
       <span>Displayed on About page.</span>
     </div>
     <div id="bio-field" class="field text-field">
-      <%= label_tag 'bio' %>
-      <%= text_area_tag 'bio', Settings.bio %>
+      <%= label_tag 'bio_text' %>
+      <%= text_area_tag 'bio', Settings.bio_text %>
     </div>
     
     <%= hidden_field_tag 'initial_setup', 'true' %>

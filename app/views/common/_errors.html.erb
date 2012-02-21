@@ -1,9 +1,5 @@
-<div id="error-explanation">
-  <div class="error-title"><%= pluralize(object.errors.count, "error") %> kept this portfolio from being saved:</div>
-
-  <ul>
+<ul id="errors">
   <% object.errors.full_messages.each do |msg| %>
     <li><%= msg %></li>
   <% end %>
-  </ul>
-</div>
+</ul>

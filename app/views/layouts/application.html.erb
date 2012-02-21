@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html>
+<meta charset="UTF-8">
+<html lang="en">
   <head>
-    <title>DRU DONOVAN<%= content_for?(:title) ? ' - ' + yield(:title) : '' %></title>
+    <title><%= Settings.site_name || 'Porto'%><%= content_for?(:title) ? ' - ' + yield(:title) : '' %></title>
     <%= stylesheet_link_tag 'application' %>
     <%= javascript_include_tag 'application' %>
-    <%= yield :script %>
     <%= csrf_meta_tag %>
-    <meta name="description" content="Official website and portfolio of photographer Dru Donovan." /> 
-    <meta name="keywords" content="Dru Donovan, photography">
     
     <!--[if lt IE9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -18,18 +16,32 @@
     
       <header class="group">
         <h1><%= link_to (Settings.site_name || 'Porto'), root_path %></h1>
-
-        <% if (controller.controller_name == 'portfolios' && controller.action_name == 'show') || controller.controller_name == 'photos'  %>
-          <nav id="portfolio-nav">
-            <% if @previous %>
-              <%= link_to 'previous', portfolio_photo_path(@portfolio, @previous), :id => 'previous-link', :class => 'active' %>
-            <% else %>
+        
+        <nav>
+          <ul id="nav">
+            <% if Settings.show_blog == 'true' %>
+              <li id="news-link"><%= link_to Settings.blog_title, page_path(Settings.blog_title.parameterize) %></li>
+            <% end %>
+            <% if Settings.show_about == 'true' %>
+              <li id="bio-link"><%= link_to Settings.about_title, page_path(Settings.about_title.parameterize) %></li>
+            <% end %>
+            <% if Settings.show_contact == 'true' %>
+              <li id="contact-link"><%= link_to Settings.contact_title, page_path(Settings.contact_title.parameterize) %></li>
+            <% end %>
+            <% if current_user %>
+              <li><%= link_to 'Admin', admin_path, :class => 'admin-link' %></li>
+              <li><%= link_to 'Log out', session_path, :confirm => 'Are you sure you want to log out?', :method => :delete, :class => 'admin-link' %></li>
+            <% end %>
+          </ul>
+        </nav>
+        
+        <% if show_project_nav %>
+          <nav id="project-nav">
+            <%= link_to_if @previous, 'previous', @previous == 1 ? project_path(@project) : project_image_path(@project, @previous), :id => 'previous-link', :class => 'active' do %>
               <span id="previous-link" class="inactive">previous</span>
             <% end %>
             
-            <% if @next %>
-              <%= link_to 'next', portfolio_photo_path(@portfolio, @next), :id => 'next-link', :class => 'active' %>
-            <% else %>
+            <%= link_to_if @next, 'next', project_image_path(@project, @next), :id => 'next-link', :class => 'active' do %>
               <span id="next-link" class="inactive">next</span>
             <% end %>
           </nav>
@@ -40,25 +52,24 @@
         <div id="notice"><%= notice %></div>
       <% end %>
       
-      <section class="main">
-        <% if @portfolios && controller.controller_name == 'portfolios' && controller.action_name == 'show' && Portfolio.count > 1 %>
-          <%= render :partial => 'portfolios/nav' %>
-        <% end %>
+      <% if alert %>
+        <div id="alert"><%= alert %></div>
+      <% end %>
       
+      <section class="main">
+        <% if show_project_sidebar %>
+          <nav>
+            <ul id="projects">
+              <% for project in @visible_projects %>
+                  <li><%= link_to_unless current_or_front(project), project.title, project %></li>
+              <% end %>
+            </ul>
+          </nav>
+        <% end %>
+        
         <%= yield %>
       </section>
     
     </content>
-    
-    <script type="text/javascript">
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-10568419-2']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
   </body>
 </html>

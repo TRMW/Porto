@@ -29,7 +29,7 @@ li {
   list-style-type: none;
   }
   
-h1 { 
+h1, h2 { 
   font-size: 20px;
   }
   
@@ -41,14 +41,8 @@ h2 {
   color: #666;
   }
   
-h3 {
-  font-size: 16px;
-  margin-top: 30px;
-  }
-  
-h3 span {
-  font-weight: normal;
-  color: #A9A9A9;
+p {
+  line-height: 20px;
   }
   
 label {
@@ -59,6 +53,7 @@ textarea {
   width: 713px;
   height: 300px;
   }
+ 
   
 /* !Layout */
   
@@ -84,25 +79,28 @@ header h1 {
   position: relative;
   }
   
+  
 /* !Nav */
   
-/*
-#nav {
-  bottom: 0;
-  left: 160px;
-  margin-bottom: -2px;
-  position: absolute;
+header #nav {
+  float: left;
+  position: relative;
+  top: 2px;
   }
   
-#nav li {
+header #nav li {
   margin-right: 8px;
   float: left;
   }
-*/
   
-/* !Portfolio Sidebar */
+a.admin-link {
+  color: #666;
+  }
+  
+  
+/* !Project Sidebar */
 
-#portfolios {
+#projects {
   left: 0;
   top: 0;
   width: 200px;
@@ -110,84 +108,74 @@ header h1 {
   position: absolute;
   }
   
-#portfolios.fixed {
-  position: fixed;
-  top: 15px; /* left position is asigned via JS */
-  margin-left: 0;
-  }
-  
-#portfolios li {
+#projects li {
   float: right;
   clear: both;
   margin-bottom: 8px;
   font-weight: bold;
   }
   
-.nav-portfolio-last {
-  border-bottom: solid 1px #E8E8E8;
-  padding-bottom: 8px;
-  }
-  
-#portfolios li a {
+#projects li a {
   font-weight: normal;
   }
   
-#news-link {
-  color: #DDD;
-  }
   
-/* !Portfolio Navigation */
+/* !Project Navigation */
 
-#portfolio-nav {
-  bottom: 0;
-  margin-bottom: -7px;
+#project-nav {
   position: absolute;
   right: 0;
+  bottom: 0;
+  margin-bottom: -7px;
   }
   
-#portfolio-nav .active,
-#portfolio-nav .inactive {
+#project-nav .active,
+#project-nav .inactive {
   float: left;
   margin-left: 8px;
   padding: 5px;
   border: solid 1px black;
+  -moz-user-select: none;
+  -webkit-user-select: none;
   }
   
-#portfolio-nav .inactive {
+#project-nav .inactive {
   color: silver;
   border-color: silver;
   cursor: default;
   }
   
-#portfolio-nav .active {
+#project-nav .active {
   color: white;
   background-color: black;
   cursor: pointer;
   }
   
-#portfolio-nav .active:hover {
+#project-nav .active:hover {
   background-color: white;
   color: black;
   }
+  
 
-/* !View Portfolio */
+/* !View Project */
 
-.portfolio-photo {
+.project-image {
   cursor: pointer;
   }
+  
 
-/* !Edit */
+/* !Edit Project */
 
-.admin-body content,
-.portfolios-new-body content,
-.portfolios-create-body content,
-.portfolios-edit-body content {
-  width: 730px; /* extra room to the right so we don't have to add a .last class to every third photo */
+.admin-body .main,
+.projects-new-body .main,
+.projects-create-body .main,
+.projects-edit-body .main {
+  width: 730px; /* extra room to the right so we don't have to add a .last class to every third image */
   -moz-user-select: none;
   -webkit-user-select: none;
   }
 
-#portfolio_title,
+#project_title,
 #post_title { 
   font-size: 20px;
   font-family: Helvetica, Arial, sans-serif;
@@ -230,7 +218,7 @@ header h1 {
   left: 5px;
   top: 5px;
   background: black;
-  font-size: 150%;
+  font-size: 120%;
   font-weight: bold;
   padding: 5px 10px 10px 5px;
   }
@@ -257,7 +245,7 @@ header h1 {
   padding-top: 78px;
   display: block;
   text-align: center;
-  font-size: 150%;
+  font-size: 120%;
   font-weight: bold;
   }
   
@@ -311,12 +299,6 @@ article.post p {
 article.post a,
 #tinymce a {
   text-decoration: underline;
-  }
-  
-/* !Pages (bio, contact, news) */
-
-.pages-show-body content p {
-  line-height: 22px;
   }
   
 /* !Settings */
@@ -383,17 +365,23 @@ article.post a,
   margin: 0 !important;
   }
   
-iframe,
-#bio_parent .mceLayout tr.mceFirst td,
+.mceEditor iframe,
+.defaultSkin .mceIframeContainer, /* remove bottom grey border on textarea */
+.defaultSkin table.mceLayout tr.mceLast td, /* ditto */
+#about_text_parent .mceLayout tr.mceFirst td,
 #post_body_parent .mceLayout tr.mceFirst td,
 #bio_parent .mceIframeContainer,
 #post_body_parent .mceIframeContainer {
-  border-bottom: none;
+  border-bottom: none !important;
   }
   
-#bio_parent .mceLayout,
+#about_text_parent .mceLayout,
 #post_body_parent .mceLayout {
   border: solid 1px black;
+  }
+  
+.defaultSkin table.mceLayout tr.mceFirst td {
+  border-top: none !important; /* remove grey top border on toolbar */
   }
   
 /* !Error Messaging */
@@ -409,12 +397,14 @@ div.field, div.actions {
   }
 
 #notice,
-#error-explanation {
+#alert,
+#errors {
   margin: 20px 0;
   }
   
 #notice,
-.error-title {
+#alert,
+#errors li {
   color: white;
   font-weight: bold;
   padding: 5px;
@@ -424,27 +414,22 @@ div.field, div.actions {
   background-color: green;
   }
 
-#error-explanation {
-  border: 2px solid #c00;
-  }
-
-.error-title {
+#alert,
+#errors li {
   background-color: #c00;
   }
 
-#error-explanation ul {
-  margin: 10px 10px 10px 40px;
-  }
-
-#error-explanation li {
-  list-style-type: disc;
-  padding: 5px;
+#errors li {
+  list-style-type: none;
+  margin-bottom: 8px;
   }
   
-.field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
+#errors li:last-child {
+  margin-bottom: 0;
+  }
+  
+.field_with_errors label {
+  color: red;
   }
   
 /* Utility Classes */

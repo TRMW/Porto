@@ -1,0 +1,51 @@
+<%= form_for [:admin, @project], :html => { :multipart => true } do |f| %>
+  <%= render :partial => 'common/errors', :locals => { :object => @project } if @project.errors.any? %>
+
+  <div class="field group">
+    <%= f.text_field :title, :placeholder => "Project Title" %>
+  </div>
+  
+  <div class="field check-field group">
+    <%= f.check_box :visible %>
+    <%= f.label :visible, 'Make this project visible?' %>
+  </div>
+  
+  <div class="blocks group">
+    <%= f.fields_for :images do |image_form| %>
+    
+      <div class="field block <%= 'sortable' if !image_form.object.new_record? %>">
+        <div class="title"><%= image_form.object.position %></div>
+        
+        <% if !image_form.object.new_record? %>
+          <div class="image-wrapper" style="background: url(<%= image_form.object.file.url(:thumb) %>) no-repeat;"></div>
+        <% else %>
+          <div class="image-placeholder"><span>add image</span></div>
+        <% end %>
+        
+        <div class="actions">
+          <% if !image_form.object.new_record? %>
+            <a href="#" class="image-replace-link left">Replace</a>
+            <%= image_form.file_field :file, :style => "display:none" %>
+            <span class="right">
+              <%= image_form.check_box '_destroy' %>
+              <%= image_form.label '_destroy', 'Remove' %>
+            </span>
+            <%= image_form.hidden_field :position %>
+          
+          <% else %>
+            <%= image_form.file_field :file %>
+          <% end %>
+        </div>
+      </div>
+      
+    <% end %>
+  </div>
+  
+  <div class="field group">
+    <%= link_to 'Add six more images', add_new_images_path(:last_image => @project.images.length, :new_images => 6), :class => 'add-more-link', :remote => true %>
+  </div>
+        
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
