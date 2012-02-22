@@ -16,6 +16,10 @@ a {
   text-decoration: none;
   }
   
+p a {
+  text-decoration: underline;
+  }
+  
 a img {
   border: none;
   }
@@ -43,6 +47,10 @@ h2 {
   
 p {
   line-height: 20px;
+  }
+  
+p.first-project-signoff {
+  margin: 20px 0;
   }
   
 label {

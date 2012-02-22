@@ -2,6 +2,10 @@
   <% content_for :title, @project.title %>
 <% end %>
 
+<% if notice && @project.id == 1 %>
+  <p class="first-project-signoff">Congrats! You've just created your first project. You can add more projects <%= ', blog posts, ' if Settings.show_blog_section %> and edit your portfolio settings any time by visiting the <%= link_to 'Admin page', admin_path %> (also linked in the nav above). Thanks for using Porto, and have fun!</p>
+<% end %>
+
 <article class="project" data-project-slug="<%= @project.slug %>" data-current-index="<%= @image.position - 1 %>">
   <% @project.images.each_with_index do |image, i| %>
     <% # link the current image to next image if there is one, otherwise link to first image in project %>
