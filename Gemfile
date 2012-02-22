@@ -18,6 +18,7 @@ gem 'tinymce-rails'
 gem 'jquery-rails'
 gem 'friendly_id', :git => 'git://github.com/norman/friendly_id.git'
 gem 'bcrypt-ruby'
+gem 'acts_as_list' # enables automatic position setting on creation for projects & images
 
 # Gems used only for assets and not required
 # in production environments by default.

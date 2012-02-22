@@ -17,23 +17,25 @@
       <header class="group">
         <h1><%= link_to (Settings.site_name || 'Porto'), root_path %></h1>
         
-        <nav>
-          <ul id="nav">
-            <% if Settings.show_blog == 'true' %>
-              <li id="news-link"><%= link_to Settings.blog_title, page_path(Settings.blog_title.parameterize) %></li>
-            <% end %>
-            <% if Settings.show_about == 'true' %>
-              <li id="bio-link"><%= link_to Settings.about_title, page_path(Settings.about_title.parameterize) %></li>
-            <% end %>
-            <% if Settings.show_contact == 'true' %>
-              <li id="contact-link"><%= link_to Settings.contact_title, page_path(Settings.contact_title.parameterize) %></li>
-            <% end %>
-            <% if current_user && !current_page?(admin_setup_path) %>
-              <li><%= link_to 'Admin', admin_path, :class => 'admin-link' %></li>
-              <li><%= link_to 'Log out', session_path, :confirm => 'Are you sure you want to log out?', :method => :delete, :class => 'admin-link' %></li>
-            <% end %>
-          </ul>
-        </nav>
+        <% if show_top_nav %>
+          <nav>
+            <ul id="nav">
+              <% if Settings.show_blog == 'true' %>
+                <li id="news-link"><%= link_to Settings.blog_title, page_path(Settings.blog_title.parameterize) %></li>
+              <% end %>
+              <% if Settings.show_about == 'true' %>
+                <li id="bio-link"><%= link_to Settings.about_title, page_path(Settings.about_title.parameterize) %></li>
+              <% end %>
+              <% if Settings.show_contact == 'true' %>
+                <li id="contact-link"><%= link_to Settings.contact_title, page_path(Settings.contact_title.parameterize) %></li>
+              <% end %>
+              <% if current_user %>
+                <li><%= link_to 'Admin', admin_path, :class => 'admin-link' %></li>
+                <li><%= link_to 'Log out', session_path, :confirm => 'Are you sure you want to log out?', :method => :delete, :class => 'admin-link' %></li>
+              <% end %>
+            </ul>
+          </nav>
+        <% end %>
         
         <% if show_project_nav %>
           <nav id="project-nav">

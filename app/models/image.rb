@@ -3,6 +3,7 @@ class Image < ActiveRecord::Base
   friendly_id :position
   belongs_to :project
   validates_attachment_presence :file
+  acts_as_list :scope => :project
   has_attached_file :file,
                     :styles => { :default => "720x576>", :thumb => "223x223>" },
                     :default_style => :default,

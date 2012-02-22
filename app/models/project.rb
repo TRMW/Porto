@@ -5,6 +5,7 @@ class Project < ActiveRecord::Base
   validates_presence_of :title, :slug, :images
   has_many :images, :order => 'position ASC', :dependent => :destroy
   accepts_nested_attributes_for :images, :allow_destroy => true
+  acts_as_list
   after_create :set_front_project
   after_save :reset_front_project
   
