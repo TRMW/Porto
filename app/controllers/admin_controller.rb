@@ -2,12 +2,8 @@ class AdminController < ApplicationController
   before_filter :require_login, :except => [ 'password', 'login' ]
   
   def index
-    if User.first
-      @projects = Project.all(:order => 'position')
-      @posts = Post.all
-    else
-      redirect_to admin_password_path
-    end
+    @projects = Project.all(:order => 'position')
+    @posts = Post.all
   end
   
   def password
