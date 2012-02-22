@@ -46,7 +46,11 @@ class ProjectsController < ApplicationController
     @project = Project.new(params[:project])
 
     if @project.save
-      redirect_to(@project, :notice => 'Project created.')
+      if @project.id == 1
+        redirect_to(project_path(@project, :first => true), :notice => 'Project created.')
+      else
+        redirect_to(@project, :notice => 'Project created.')
+      end
     else
       6.times do
         @project.images.build
