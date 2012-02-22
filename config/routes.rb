@@ -15,7 +15,7 @@ Porto::Application.routes.draw do
 	match 'admin/login' => 'admin#login', :as => :login
   match 'admin/add_new_images' => 'admin#add_new_images', :as => :add_new_images
 	match 'admin/set_position' => 'admin#set_position', :as => :set_position
-	match 'settings' => 'admin#settings'
+	match 'admin/settings' => 'admin#settings'
 	scope 'admin', :as => 'admin' do
   	resources :projects, :except => [ :show, :index ]
   	resources :posts

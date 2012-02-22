@@ -14,6 +14,12 @@ class AdminController < ApplicationController
     end
   end
   
+  def setup
+    if Project.count > 0
+      redirect_to admin_path
+    end
+  end
+  
   def add_new_images
     @start = params[:last_image].to_i
     @new_images = params[:new_images].to_i
