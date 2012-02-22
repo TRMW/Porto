@@ -1,57 +1,7 @@
+<% content_for :title do "Setup" end %>
+
 <h2>Setup</h2>
 
-<p>OK, now we need to get the basic settings. Don't worry, you can always edit these later.</p>
+<p>OK! Now it's time to customize your portoflio. Don't worry, you can always edit this stuff later.</p>
 
-<div class="settings">
-  <%= form_tag('/admin/settings') do %>
-    <div class="field">
-      <%= label_tag 'site_name', 'Site Name' %>
-      <%= text_field_tag 'site_name', Settings.site_name, :placeholder => 'John Doe\'s Portfolio' %>
-      <span>This will be the name of your site, as displayed in the header and title bar.</span>
-    </div>
-    <div class="field first">
-      <%= label_tag 'blog_title', 'Blog Section Title' %>
-      <%= text_field_tag 'blog_title', Settings.blog_title, :placeholder => 'Blog' %>
-    </div>
-    <div class="field">
-      <%= label_tag 'about_title', 'About Section Title' %>
-      <%= text_field_tag 'about_title', Settings.about_title, :placeholder => 'About' %>
-    </div>
-    <div class="field">
-      <%= label_tag 'contact_title', 'Contact Section Title' %>
-      <%= text_field_tag 'contact_title', Settings.contact_title, :placeholder => 'Contact' %>
-    </div>
-    <div class="field first check-field">
-      <%= check_box_tag 'show_blog', 'true', (Settings.show_blog == 'true') %>
-      <%= label_tag 'show_blog', 'Show Blog section?' %>
-    </div>
-    <div class="field check-field">
-      <%= check_box_tag 'show_about', 'true', (Settings.show_about == 'true') %>
-      <%= label_tag 'show_about', 'Show About section?' %>
-    </div>
-    <div class="field check-field">
-      <%= check_box_tag 'show_contact', 'true', (Settings.show_contact == 'true') %>
-      <%= label_tag 'show_contact', 'Show Contact section?' %>
-    </div>
-    <div class="field first">
-      <%= label_tag 'email' %>
-      <%= text_field_tag 'email', Settings.email %>
-      <span>Displayed on About page.</span>
-    </div>
-    <div class="field">
-      <%= label_tag 'phone' %>
-      <%= text_field_tag 'phone', Settings.phone %>
-      <span>Displayed on About page.</span>
-    </div>
-    <div id="bio-field" class="field text-field">
-      <%= label_tag 'about_text' %>
-      <%= text_area_tag 'about_text', Settings.about_text %>
-    </div>
-    
-    <%= hidden_field_tag 'initial_setup', 'true' %>
-    
-    <div class="field">
-      <%= submit_tag "Save Settings" %>
-    </div>
-  <% end %>
-</div>
+<%= render 'settings' %>

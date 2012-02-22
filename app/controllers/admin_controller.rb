@@ -37,13 +37,6 @@ class AdminController < ApplicationController
   
   def settings
     Settings.site_name = params[:site_name]
-    Settings.front_project = params[:front_project].to_i
-    @front_project = Project.find(Settings.front_project)
-    # make the front portfolio visible if it's not already
-    if !@front_project.visible?
-      @front_project.visible = true
-      @front_project.save
-    end
     Settings.show_projects = params[:show_projects] || 'false'
     Settings.blog_title = params[:blog_title]
     Settings.about_title = params[:about_title]
@@ -54,6 +47,17 @@ class AdminController < ApplicationController
     Settings.phone = params[:phone]
     Settings.email = params[:email]
     Settings.about_text = params[:about_text]
+    
+    if params[:front_project]
+      Settings.front_project = params[:front_project].to_i
+      @front_project = Project.find(Settings.front_project)
+      # make the front portfolio visible if it's not already
+      if !@front_project.visible?
+        @front_project.visible = true
+        @front_project.save
+      end
+    end
+    
     if params[:initial_setup]
       redirect_to :controller => 'projects', :action => 'new'
     else
