@@ -12,13 +12,15 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   
   def require_login
-    # if the admin user hasn't been created yet, then redirect to user creation workflow
-    if User.count == 0
-      redirect_to admin_password_path
-    # otherwise redirect to login
-    else unless !!current_user
-      flash[:error] = "You must be logged in to access this section."
-      redirect_to login_path
+    unless !!current_user
+      if User.count == 0
+        # if the admin user hasn't been created yet, then redirect to user creation workflow
+        redirect_to admin_password_path
+      else
+         # otherwise redirect to login
+        flash[:error] = "You must be logged in to access this section."
+        redirect_to login_path
+      end
     end
   end
 end
