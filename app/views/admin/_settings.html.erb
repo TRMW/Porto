@@ -1,7 +1,7 @@
 <h2>Settings</h2>
   
 <div class="settings">
-  <%= form_tag('/settings') do %>
+  <%= form_tag('/admin/settings') do %>
     <div class="field">
       <%= label_tag 'site_name', 'Site Name' %>
       <%= text_field_tag 'site_name', Settings.site_name, :placeholder => 'John Doe\'s Portfolio' %>

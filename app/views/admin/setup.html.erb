@@ -3,7 +3,7 @@
 <p>OK, now we need to get the basic settings. Don't worry, you can always edit these later.</p>
 
 <div class="settings">
-  <%= form_tag('/settings') do %>
+  <%= form_tag('/admin/settings') do %>
     <div class="field">
       <%= label_tag 'site_name', 'Site Name' %>
       <%= text_field_tag 'site_name', Settings.site_name, :placeholder => 'John Doe\'s Portfolio' %>
@@ -22,12 +22,12 @@
       <%= text_field_tag 'contact_title', Settings.contact_title, :placeholder => 'Contact' %>
     </div>
     <div class="field first check-field">
-      <%= check_box_tag 'show_news', 'true', (Settings.show_news == 'true') %>
-      <%= label_tag 'show_news', 'Show News section?' %>
+      <%= check_box_tag 'show_blog', 'true', (Settings.show_blog == 'true') %>
+      <%= label_tag 'show_blog', 'Show Blog section?' %>
     </div>
     <div class="field check-field">
       <%= check_box_tag 'show_about', 'true', (Settings.show_about == 'true') %>
-      <%= label_tag 'show_about', 'Show Bio section?' %>
+      <%= label_tag 'show_about', 'Show About section?' %>
     </div>
     <div class="field check-field">
       <%= check_box_tag 'show_contact', 'true', (Settings.show_contact == 'true') %>
@@ -44,8 +44,8 @@
       <span>Displayed on About page.</span>
     </div>
     <div id="bio-field" class="field text-field">
-      <%= label_tag 'bio_text' %>
-      <%= text_area_tag 'bio', Settings.bio_text %>
+      <%= label_tag 'about_text' %>
+      <%= text_area_tag 'about_text', Settings.about_text %>
     </div>
     
     <%= hidden_field_tag 'initial_setup', 'true' %>

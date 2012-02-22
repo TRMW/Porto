@@ -20,7 +20,7 @@ class ProjectsController < ApplicationController
         redirect_to @project, status: :moved_permanently
       end
     else
-      redirect_to admin_password_path
+      redirect_to admin_path
     end
   end
 
