@@ -25,29 +25,33 @@
   </div><!-- end new project block -->
 </div>
 
-<h2>Blog</h2>
+<% if Settings.show_blog == 'true' %>
 
-<div class="group">
+  <h2>Blog</h2>
 
-  <% for post in @posts do %>
-  <div class="field block">
-    <div class="title"><%= link_to post.title, edit_admin_post_path(post) %></div>
-    <div class="image-wrapper">
-      <%= link_to image_tag(post.image.url(:thumb)), edit_admin_post_path(post) %>
+  <div class="group">
+  
+    <% for post in @posts do %>
+    <div class="field block">
+      <div class="title"><%= link_to post.title, edit_admin_post_path(post) %></div>
+      <div class="image-wrapper">
+        <%= link_to image_tag(post.image.url(:thumb)), edit_admin_post_path(post) %>
+      </div>
+    <div class="actions">
+      <%= link_to 'View', page_path(Settings.blog_title.downcase.parameterize, post), :class => 'left' %>
+      <%= link_to 'Delete', post_path(post), :confirm => 'Are you sure?', :method => :delete, :class => 'right' %>
     </div>
-  <div class="actions">
-    <%= link_to 'View', page_path(Settings.blog_title.downcase.parameterize, post), :class => 'left' %>
-    <%= link_to 'Delete', post_path(post), :confirm => 'Are you sure?', :method => :delete, :class => 'right' %>
+    </div><!-- end post blocks -->
+    <% end %>
+    
+    <div class="field block">
+      <div class="image-placeholder"><%= link_to 'add post', new_admin_post_path %></div>
+    <div class="actions"></div>
+    </div><!-- end new post block -->
+    
   </div>
-  </div><!-- end post blocks -->
-  <% end %>
-  
-  <div class="field block">
-    <div class="image-placeholder"><%= link_to 'add post', new_admin_post_path %></div>
-  <div class="actions"></div>
-  </div><!-- end new post block -->
-  
-</div>
+
+<% end %>
   
 <h2>Settings</h2>
 

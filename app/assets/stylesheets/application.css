@@ -61,8 +61,11 @@ textarea {
   width: 713px;
   height: 300px;
   }
- 
   
+input[disabled] {
+  background: #EEE;
+  }
+ 
 /* !Layout */
   
 content {
@@ -87,7 +90,6 @@ header h1 {
   position: relative;
   }
   
-  
 /* !Nav */
   
 header #nav {
@@ -104,7 +106,6 @@ header #nav li {
 a.admin-link {
   color: #666;
   }
-  
   
 /* !Project Sidebar */
 
@@ -126,7 +127,6 @@ a.admin-link {
 #projects li a {
   font-weight: normal;
   }
-  
   
 /* !Project Navigation */
 
@@ -164,14 +164,12 @@ a.admin-link {
   color: black;
   }
   
-
 /* !View Project */
 
 .project-image {
   cursor: pointer;
   }
   
-
 /* !Edit Project */
 
 .admin-body .main,
