@@ -3,7 +3,7 @@
   <div class="post-body">
     <header>
       <h1><%= post.title %></h1>
-      <time datetime="<%= post.created_at.to_date %>" pubdate><%= link_to post.created_at.strftime('%b %d, %Y'), page_path(Settings.news_title.parameterize, post) %></time>
+      <time datetime="<%= post.created_at.to_date %>" pubdate><%= link_to post.created_at.strftime('%b %d, %Y'), page_path(Settings.blog_title.parameterize, post) %></time>
     </header>
     
     <%= raw post.body %>
