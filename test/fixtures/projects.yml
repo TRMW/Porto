@@ -1,11 +1,6 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  title: MyString
-  visible: false
-  position: 1
-
-two:
-  title: MyString
-  visible: false
+project_one:
+  title: Valid
+  slug: valid
   position: 1

@@ -2,13 +2,8 @@ require 'test_helper'
 
 class ProjectsControllerTest < ActionController::TestCase
   setup do
-    @project = projects(:one)
-  end
-
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:projects)
+    log_in_user
+    @project = projects(:project_one)
   end
 
   test "should get new" do
@@ -17,8 +12,12 @@ class ProjectsControllerTest < ActionController::TestCase
   end
 
   test "should create project" do
+    new_project = Project.new
+    new_project.title = 'Test Project'
+    file = Rack::Test::UploadedFile.new(Rails.root.join("test/unit/images/photo.jpg"), 'image/jpg')
+    
     assert_difference('Project.count') do
-      post :create, :project => @project.attributes
+      post :create, :project => new_project.attributes.merge("images_attributes" => { "0"=> { "file" => file } })
     end
 
     assert_redirected_to project_path(assigns(:project))
@@ -27,6 +26,8 @@ class ProjectsControllerTest < ActionController::TestCase
   test "should show project" do
     get :show, :id => @project.to_param
     assert_response :success
+    assert_not_nil assigns(:project)
+    assert_not_nil assigns(:image)
   end
 
   test "should get edit" do
@@ -44,6 +45,6 @@ class ProjectsControllerTest < ActionController::TestCase
       delete :destroy, :id => @project.to_param
     end
 
-    assert_redirected_to projects_path
+    assert_redirected_to admin_path
   end
 end

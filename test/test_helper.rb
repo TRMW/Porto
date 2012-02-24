@@ -8,6 +8,10 @@ class ActiveSupport::TestCase
   # Note: You'll currently still have to declare fixtures explicitly in integration tests
   # -- they do not yet inherit this setting
   fixtures :all
+  
+  def log_in_user
+    session[:user_id] = users(:user_one).id
+  end
 
   # Add more helper methods to be used by all tests here...
 end

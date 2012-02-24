@@ -1,11 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  image_file_name: MyString
-  portfolio: 
+image_one:
+  file_file_name: MyString
+  project: project_one
   position: 1
 
-two:
-  image_file_name: MyString
-  portfolio: 
-  position: 1
+image_two:
+  file_file_name: MyOtherString
+  project: project_one
+  position: 2

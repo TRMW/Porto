@@ -1,7 +1,4 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  password_digest: MyString
-
-two:
+user_one:
   password_digest: MyString

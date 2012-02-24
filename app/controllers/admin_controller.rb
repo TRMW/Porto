@@ -2,7 +2,7 @@ class AdminController < ApplicationController
   before_filter :require_login, :except => [ 'password', 'login' ]
   
   def index
-    @projects = Project.all(:order => 'position')
+    @projects = Project.all
     @posts = Post.all
   end
   
@@ -37,7 +37,6 @@ class AdminController < ApplicationController
   
   def settings
     Settings.site_name = params[:site_name]
-    Settings.show_projects = params[:show_projects] || 'false'
     Settings.blog_title = params[:blog_title]
     Settings.about_title = params[:about_title]
     Settings.contact_title = params[:contact_title]

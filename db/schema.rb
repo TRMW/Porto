@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(:version => 20120219033721) do
 
   create_table "friendly_id_slugs", :force => true do |t|
-    t.string   "slug", :null => false
-    t.integer  "sluggable_id", :null => false
+    t.string   "slug",                         :null => false
+    t.integer  "sluggable_id",                 :null => false
     t.string   "sluggable_type", :limit => 40
     t.datetime "created_at"
   end
@@ -28,16 +28,16 @@ ActiveRecord::Schema.define(:version => 20120219033721) do
     t.string   "file_file_name"
     t.integer  "project_id"
     t.integer  "position"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.text     "body"
     t.string   "image_file_name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "slug"
   end
 
@@ -45,28 +45,28 @@ ActiveRecord::Schema.define(:version => 20120219033721) do
 
   create_table "projects", :force => true do |t|
     t.string   "title"
-    t.boolean  "visible", :default => true
+    t.boolean  "visible",    :default => true
     t.integer  "position"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "slug"
   end
 
   add_index "projects", ["slug"], :name => "index_portfolios_on_slug", :unique => true
 
   create_table "settings", :force => true do |t|
-    t.string   "var", :null => false
+    t.string   "var",        :null => false
     t.text     "value"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "settings", ["var"], :name => "index_settings_on_var", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "password_digest"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
 end

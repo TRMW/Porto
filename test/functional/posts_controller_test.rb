@@ -2,13 +2,8 @@ require 'test_helper'
 
 class PostsControllerTest < ActionController::TestCase
   setup do
-    @post = posts(:one)
-  end
-
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:posts)
+    log_in_user
+    @post = posts(:post_one)
   end
 
   test "should get new" do
@@ -21,12 +16,7 @@ class PostsControllerTest < ActionController::TestCase
       post :create, :post => @post.attributes
     end
 
-    assert_redirected_to post_path(assigns(:post))
-  end
-
-  test "should show post" do
-    get :show, :id => @post.to_param
-    assert_response :success
+    assert_redirected_to page_path(Settings.blog_title.downcase.parameterize, (assigns(:post)))
   end
 
   test "should get edit" do
@@ -36,7 +26,7 @@ class PostsControllerTest < ActionController::TestCase
 
   test "should update post" do
     put :update, :id => @post.to_param, :post => @post.attributes
-    assert_redirected_to post_path(assigns(:post))
+    assert_redirected_to page_path(Settings.blog_title.downcase.parameterize, (assigns(:post)))
   end
 
   test "should destroy post" do
@@ -44,6 +34,6 @@ class PostsControllerTest < ActionController::TestCase
       delete :destroy, :id => @post.to_param
     end
 
-    assert_redirected_to posts_path
+    assert_redirected_to admin_path
   end
 end

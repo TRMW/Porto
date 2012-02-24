@@ -1,10 +1,9 @@
 Porto::Application.routes.draw do
 	
 	resources :projects, :only => :show do
-		resources :images
+		resources :images, :except => [ :index, :new, :edit ]
 	end
 	
-	resources :posts, :only => [ :show, :index ]
   resources :users, :only => :create
   resource :session, :only => [ :create, :destroy ]
   
@@ -17,8 +16,8 @@ Porto::Application.routes.draw do
 	match 'admin/set_position' => 'admin#set_position', :as => :set_position
 	match 'admin/settings' => 'admin#settings'
 	scope 'admin', :as => 'admin' do
-  	resources :projects, :except => [ :show, :index ]
-  	resources :posts
+  	resources :projects, :except => [ :show ]
+  	resources :posts, :except => [ :show, :index ]
 	end
 	
 	# catch-all for rendering News, Bio, and Contact, regardless of what the user has named them

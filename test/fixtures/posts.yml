@@ -1,11 +1,13 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
+post_one:
   title: MyString
+  slug: baz
   body: MyText
   image_file_name: MyString
-
-two:
-  title: MyString
-  body: MyText
-  image_file_name: MyString
+  
+post_two:
+  title: Bar
+  slug: bar
+  body: This is my awesome post
+  image_file_name: name.jpg
