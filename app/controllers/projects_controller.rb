@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   def show
     if Project.count > 0
       # show front project if no ID specified, falling back to first
-      @project = Project.find(params[:id])
+      @project = Project.find(params[:id] || Settings.front_project|| Project.first)
       @image = @project.images.first
       
       # used for project navigation
