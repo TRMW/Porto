@@ -211,6 +211,7 @@ a.admin-link {
   }
     
 .image-wrapper {
+  background-size: cover;
   height: 180px;
   overflow: hidden;
   }
@@ -242,7 +243,7 @@ a.admin-link {
 .image-placeholder {
   border: dashed 1px white;
   height: 178px;
-  width: 223px;
+  width: 221px;
   position: relative;
   }
 

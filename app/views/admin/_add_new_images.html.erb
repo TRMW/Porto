@@ -1,6 +1,6 @@
 <% new_images.to_i.times do |i| %>
   <div class="field block portfolio-new-image">
-    <div class="image-placeholder"><span>add photo</span></div>
+    <div class="image-placeholder"><span>add image</span></div>
     <div class="actions">
       <% index = start + i %>
       <%= file_field_tag 'project[images_attributes][' + index.to_s + '][file]' %>
