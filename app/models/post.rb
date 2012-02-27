@@ -8,7 +8,5 @@ class Post < ActiveRecord::Base
                     :default_style => :default,
                     :storage => :s3, 
                     :s3_credentials => "#{Rails.root}/config/s3.yml",
-                    #:s3_host_alias => "images.drudonovan.com",
-                    #:url => ":s3_alias_url",
                     :path => ":class/:id/:basename-:style.:extension"
 end

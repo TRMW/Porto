@@ -9,7 +9,5 @@ class Image < ActiveRecord::Base
                     :default_style => :default,
                     :storage => :s3, 
                     :s3_credentials => "#{Rails.root}/config/s3.yml",
-                    #:s3_host_alias => "images.drudonovan.com",
-                    #:url => ":s3_alias_url",
                     :path => "projects/:project_id/:basename/:basename-:style.:extension"
 end

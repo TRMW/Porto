@@ -39,7 +39,7 @@
       </div>
     <div class="actions">
       <%= link_to 'View', page_path(Settings.blog_title.downcase.parameterize, post), :class => 'left' %>
-      <%= link_to 'Delete', post_path(post), :confirm => 'Are you sure?', :method => :delete, :class => 'right' %>
+      <%= link_to 'Delete', admin_post_path(post), :confirm => 'Are you sure?', :method => :delete, :class => 'right' %>
     </div>
     </div><!-- end post blocks -->
     <% end %>
