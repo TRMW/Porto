@@ -1,6 +1,6 @@
 # What's Porto?
 
-Porto is a simple visual portfolio app running on Rails 3. It provides and interface for adding and editing multiple projects, a blog section, about page, and contact details. You can even customize the section titles if you like. You can see a working demo app here: http://porto-demo.herokuapp.com.
+Porto is a simple visual portfolio app running on Rails 3. It provides an interface for adding and editing multiple projects, a blog section, about page, and contact details. You can even customize the section titles if you like. You can see a working demo app here: http://porto-demo.herokuapp.com.
 
 # Setup
 
