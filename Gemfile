@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
+gem 'thin'
 gem 'rails', '3.2.1'
 
 # add postgre adaptor for heroku
